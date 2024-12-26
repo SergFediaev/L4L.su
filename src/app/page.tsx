@@ -15,7 +15,7 @@ const saira = Saira_Stencil_One({
 
 export default function Home() {
 	return (
-		<main className='text-2xl pb-28'>
+		<main className='sm:text-2xl pb-28'>
 			<ul className='flex flex-wrap gap-4 justify-evenly sticky top-0 bg-black p-4 z-10 shadow-2xl shadow-black backdrop-blur-lg bg-opacity-80'>
 				<li>
 					<a href='/#Servers'>Servers</a>
@@ -59,7 +59,7 @@ export default function Home() {
 				</header>
 				<div className='mb-32'>
 					<Accent className='text-center'>Monitoring servers:</Accent>
-					<table className='break-all text-left border-spacing-y-4 border-spacing-x-8 border-separate'>
+					<table className='break-all text-left sm:border-spacing-y-4 sm:border-spacing-x-8 border-spacing-x-4 border-spacing-y-2 border-separate'>
 						<thead>
 							<tr>
 								<th>Server name</th>
@@ -168,15 +168,13 @@ export default function Home() {
 					unnecessary restrictions. We focus on what matters: giving you the
 					best cooperative experience possible.
 				</Text>
-				<Review source='The New York Times'>
-					The most based game experience
-				</Review>
+				<Review source='The Times'>Most based game experience ever</Review>
 				<Accent>Endless Adventures</Accent>
 				<Text>
 					With an ever-growing library of curated custom campaigns, there's
 					always a fresh challenge waiting for you and your friends.
 				</Text>
-				<Review source="'Soldier (49-th unit)">
+				<Review source='Soldier (49-th unit)'>
 					I'm suffering. But I like it!
 				</Review>
 				<Accent>Are You Ready to Become a Legend?</Accent>
