@@ -5,6 +5,7 @@ import { Text } from '@/components/text'
 import Image from 'next/image'
 
 import { Accent } from '@/components/accent'
+import { List } from '@/components/list'
 import { NumCell } from '@/components/numCell'
 import { Saira_Stencil_One } from 'next/font/google'
 
@@ -13,12 +14,17 @@ const saira = Saira_Stencil_One({
 	weight: '400',
 })
 
+const SERVERS_ANCHOR = '/#Servers'
+
 export default function Home() {
 	return (
-		<main className='sm:text-2xl pb-28'>
-			<ul className='flex flex-wrap gap-4 justify-evenly sticky top-0 bg-black p-4 z-10 shadow-2xl shadow-black backdrop-blur-lg bg-opacity-80'>
+		<main className='sm:text-2xl'>
+			<List
+				isColumn={false}
+				className='justify-evenly sticky top-0 bg-black p-4 z-10 shadow-2xl shadow-black backdrop-blur-lg bg-opacity-80'
+			>
 				<li>
-					<a href='/#Servers'>Servers</a>
+					<a href={SERVERS_ANCHOR}>Servers</a>
 				</li>
 				<li>
 					<a href='https://steamcommunity.com/groups/Left4Legend/announcements'>
@@ -26,7 +32,7 @@ export default function Home() {
 					</a>
 				</li>
 				<li>
-					<a href='https://steamcommunity.com/groups/Left4Legend'>Community</a>
+					<a href='https://steamcommunity.com/groups/Left4Legend'>Group</a>
 				</li>
 				<li>
 					<a href='https://steamcommunity.com/chat/invite/HWJHvO7g'>Chat</a>
@@ -41,7 +47,7 @@ export default function Home() {
 						Maps
 					</a>
 				</li>
-			</ul>
+			</List>
 			<div id='Servers' className='flex p-8 flex-col items-center gap-10'>
 				<header className='flex flex-wrap items-center justify-center gap-x-10'>
 					<h1
@@ -58,7 +64,7 @@ export default function Home() {
 					/>
 				</header>
 				<div className='max-w-full mb-32'>
-					<Accent className='text-center'>Monitoring servers:</Accent>
+					<Accent className='text-center'>Servers monitoring</Accent>
 					<div className='overflow-x-auto'>
 						<table className='text-left sm:border-spacing-y-4 sm:border-spacing-x-8 border-spacing-x-4 border-spacing-y-2 border-separate'>
 							<thead className='align-top'>
@@ -188,24 +194,81 @@ export default function Home() {
 				</Text>
 				<Review>That's our official instructions</Review>
 				<a
-					href='/#Servers'
-					className='text-4xl sm:text-8xl font-black underline-offset-8'
+					href={SERVERS_ANCHOR}
+					className='text-4xl sm:text-8xl font-black underline-offset-8 mb-28'
 				>
 					Now playing!
 				</a>
-			</div>
-			<button
-				type='button'
-				className='shadow-lg shadow-black transition text-black hover:bg-variant hover:glow fixed m-8 bottom-0 right-0 px-4 py-2 bg-accent rounded-2xl hover:shadow-none'
-				title='Play on random server'
-			>
-				<a
-					href='steam://connect/95.143.216.252:27021'
-					className='no-underline hover:text-black'
+				<button
+					type='button'
+					className='self-end shadow-lg shadow-black transition text-black hover:bg-variant hover:glow sticky bottom-8 px-4 py-2 bg-accent rounded-2xl hover:shadow-none'
+					title='Play on random server'
 				>
-					Play now
-				</a>
-			</button>
+					<a
+						href='steam://connect/95.143.216.252:27021'
+						className='no-underline hover:text-black'
+					>
+						Play now
+					</a>
+				</button>
+			</div>
+			<footer className='p-6 text-base bg-black sm:justify-around flex flex-wrap gap-y-4 gap-x-10'>
+				<List>
+					<li>
+						<a href={SERVERS_ANCHOR}>Monitoring servers</a>
+					</li>
+					<li>
+						<a href='https://steamcommunity.com/groups/Left4Legend/discussions/0/601891362926791888'>
+							Support by donation
+						</a>
+					</li>
+					<li>
+						<a href='https://steamcommunity.com/groups/Left4Legend/discussions/0/601891362926791278'>
+							Report a servers problem
+						</a>
+					</li>
+					<li>
+						<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3384448522'>
+							Complete servers guide
+						</a>
+					</li>
+				</List>
+				<List className='sm:text-center'>
+					<li>
+						© 2022–{new Date().getFullYear()} <a href='https://Sefo.su'>Sefo</a>
+					</li>
+					<li>
+						<q className='italic'>Legends never die!</q>
+					</li>
+					<li>
+						<a href='https://github.com/SefoNotasi/Left4LegendServer'>
+							GitHub servers repository
+						</a>
+					</li>
+				</List>
+				<List>
+					<li>
+						<a href='https://steamcommunity.com/groups/Left4Legend'>
+							Steam community group
+						</a>
+					</li>
+					<li>
+						<a href='https://steamcommunity.com/chat/invite/HWJHvO7g'>
+							Steam community chat
+						</a>
+					</li>
+					<li>
+						<a href='https://steamcommunity.com/groups/Left4Legend/announcements'>
+							Community announcements
+						</a>
+					</li>
+					<li>
+						<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3388609126'>
+							Servers maps collection
+						</a>
+					</li>
+				</List>
+			</footer>
 		</main>
 	)
 }
