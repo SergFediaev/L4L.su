@@ -45,7 +45,7 @@ export default function Home() {
 			<div id='Servers' className='flex p-8 flex-col items-center gap-10'>
 				<header className='flex flex-wrap items-center justify-center gap-x-10'>
 					<h1
-						className={`${saira.className} break-all text-6xl antialiased sm:text-8xl glow hover:text-accent transition hover:drop-shadow-[0_0_10px_rgba(0,0,0,1)]`}
+						className={`${saira.className} text-center text-6xl antialiased sm:text-8xl glow hover:text-accent transition hover:drop-shadow-[0_0_10px_rgba(0,0,0,1)]`}
 					>
 						Left 4 Legend
 					</h1>
@@ -57,80 +57,82 @@ export default function Home() {
 						className='glow hover:animate-pulse'
 					/>
 				</header>
-				<div className='mb-32'>
+				<div className='max-w-full mb-32'>
 					<Accent className='text-center'>Monitoring servers:</Accent>
-					<table className='break-all text-left sm:border-spacing-y-4 sm:border-spacing-x-8 border-spacing-x-4 border-spacing-y-2 border-separate'>
-						<thead>
-							<tr>
-								<th>Server name</th>
-								<th>IP address : port</th>
-								<th>Tickrate</th>
-								<th>Players</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Left 4 Legend #1</td>
-								<td>
-									<a href='steam://connect/95.143.216.252:27021'>
-										95.143.216.252:27021
-									</a>
-								</td>
-								<NumCell>30</NumCell>
-								<NumCell>4</NumCell>
-							</tr>
-							<tr>
-								<td>Left 4 Legend #2</td>
-								<td>
-									<a href='steam://connect/95.143.216.252:27022'>
-										95.143.216.252:27022
-									</a>
-								</td>
-								<NumCell>30</NumCell>
-								<NumCell>4</NumCell>
-							</tr>
-							<tr>
-								<td>Left 4 Legend #3</td>
-								<td>
-									<a href='steam://connect/95.143.216.252:27023'>
-										95.143.216.252:27023
-									</a>
-								</td>
-								<NumCell>30</NumCell>
-								<NumCell>4</NumCell>
-							</tr>
-							<tr>
-								<td>Left 4 Legend #4</td>
-								<td>
-									<a href='steam://connect/95.143.216.252:27024'>
-										95.143.216.252:27024
-									</a>
-								</td>
-								<NumCell>30</NumCell>
-								<NumCell>4</NumCell>
-							</tr>
-							<tr>
-								<td>Left 4 Legend #5</td>
-								<td>
-									<a href='steam://connect/95.143.216.252:27025'>
-										95.143.216.252:27025
-									</a>
-								</td>
-								<NumCell>30</NumCell>
-								<NumCell>4</NumCell>
-							</tr>
-							<tr>
-								<td>L4L #0 Test</td>
-								<td>
-									<a href='steam://connect/95.143.216.252:27020'>
-										95.143.216.252:27020
-									</a>
-								</td>
-								<NumCell>30</NumCell>
-								<NumCell>4</NumCell>
-							</tr>
-						</tbody>
-					</table>
+					<div className='overflow-x-auto'>
+						<table className='text-left sm:border-spacing-y-4 sm:border-spacing-x-8 border-spacing-x-4 border-spacing-y-2 border-separate'>
+							<thead className='align-top'>
+								<tr>
+									<th>Server name</th>
+									<th>IP address : port</th>
+									<th>Tickrate</th>
+									<th>Players</th>
+								</tr>
+							</thead>
+							<tbody className='align-top'>
+								<tr>
+									<td>Left 4 Legend #1</td>
+									<td>
+										<a href='steam://connect/95.143.216.252:27021'>
+											95.143.216.252:27021
+										</a>
+									</td>
+									<NumCell>30</NumCell>
+									<NumCell>4</NumCell>
+								</tr>
+								<tr>
+									<td>Left 4 Legend #2</td>
+									<td>
+										<a href='steam://connect/95.143.216.252:27022'>
+											95.143.216.252:27022
+										</a>
+									</td>
+									<NumCell>30</NumCell>
+									<NumCell>4</NumCell>
+								</tr>
+								<tr>
+									<td>Left 4 Legend #3</td>
+									<td>
+										<a href='steam://connect/95.143.216.252:27023'>
+											95.143.216.252:27023
+										</a>
+									</td>
+									<NumCell>30</NumCell>
+									<NumCell>4</NumCell>
+								</tr>
+								<tr>
+									<td>Left 4 Legend #4</td>
+									<td>
+										<a href='steam://connect/95.143.216.252:27024'>
+											95.143.216.252:27024
+										</a>
+									</td>
+									<NumCell>30</NumCell>
+									<NumCell>4</NumCell>
+								</tr>
+								<tr>
+									<td>Left 4 Legend #5</td>
+									<td>
+										<a href='steam://connect/95.143.216.252:27025'>
+											95.143.216.252:27025
+										</a>
+									</td>
+									<NumCell>30</NumCell>
+									<NumCell>4</NumCell>
+								</tr>
+								<tr>
+									<td>L4L #0 Test</td>
+									<td>
+										<a href='steam://connect/95.143.216.252:27020'>
+											95.143.216.252:27020
+										</a>
+									</td>
+									<NumCell>30</NumCell>
+									<NumCell>4</NumCell>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 				<Accent>Take Your Left 4 Dead 2 Experience to the Next Level</Accent>
 				<Text>
