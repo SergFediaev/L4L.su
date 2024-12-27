@@ -1,13 +1,12 @@
 'use client'
 
-import { Review } from '@/components/review'
-import { Text } from '@/components/text'
-import Image from 'next/image'
-
 import { Accent } from '@/components/accent'
 import { List } from '@/components/list'
-import { NumCell } from '@/components/numCell'
+import { Monitoring } from '@/components/monitoring'
+import { Review } from '@/components/review'
+import { Text } from '@/components/text'
 import { Saira_Stencil_One } from 'next/font/google'
+import Image from 'next/image'
 
 const saira = Saira_Stencil_One({
 	subsets: ['latin'],
@@ -48,7 +47,7 @@ export default function Home() {
 					</a>
 				</li>
 			</List>
-			<div id='Servers' className='flex p-8 flex-col items-center gap-10'>
+			<div id='Servers' className='flex px-8 pt-8 flex-col items-center gap-10'>
 				<header className='flex flex-wrap items-center justify-center gap-x-10'>
 					<h1
 						className={`${saira.className} text-center text-6xl antialiased sm:text-8xl glow hover:text-accent transition hover:drop-shadow-[0_0_10px_rgba(0,0,0,1)]`}
@@ -63,83 +62,7 @@ export default function Home() {
 						className='glow hover:animate-pulse'
 					/>
 				</header>
-				<div className='max-w-full mb-32'>
-					<Accent className='text-center'>Servers monitoring</Accent>
-					<div className='overflow-x-auto'>
-						<table className='text-left sm:border-spacing-y-4 sm:border-spacing-x-8 border-spacing-x-4 border-spacing-y-2 border-separate'>
-							<thead className='align-top'>
-								<tr>
-									<th>Server name</th>
-									<th>IP address : port</th>
-									<th>Tickrate</th>
-									<th>Players</th>
-								</tr>
-							</thead>
-							<tbody className='align-top'>
-								<tr>
-									<td>Left 4 Legend #1</td>
-									<td>
-										<a href='steam://connect/95.143.216.252:27021'>
-											95.143.216.252:27021
-										</a>
-									</td>
-									<NumCell>30</NumCell>
-									<NumCell>4</NumCell>
-								</tr>
-								<tr>
-									<td>Left 4 Legend #2</td>
-									<td>
-										<a href='steam://connect/95.143.216.252:27022'>
-											95.143.216.252:27022
-										</a>
-									</td>
-									<NumCell>30</NumCell>
-									<NumCell>4</NumCell>
-								</tr>
-								<tr>
-									<td>Left 4 Legend #3</td>
-									<td>
-										<a href='steam://connect/95.143.216.252:27023'>
-											95.143.216.252:27023
-										</a>
-									</td>
-									<NumCell>30</NumCell>
-									<NumCell>4</NumCell>
-								</tr>
-								<tr>
-									<td>Left 4 Legend #4</td>
-									<td>
-										<a href='steam://connect/95.143.216.252:27024'>
-											95.143.216.252:27024
-										</a>
-									</td>
-									<NumCell>30</NumCell>
-									<NumCell>4</NumCell>
-								</tr>
-								<tr>
-									<td>Left 4 Legend #5</td>
-									<td>
-										<a href='steam://connect/95.143.216.252:27025'>
-											95.143.216.252:27025
-										</a>
-									</td>
-									<NumCell>30</NumCell>
-									<NumCell>4</NumCell>
-								</tr>
-								<tr>
-									<td>L4L #0 Test</td>
-									<td>
-										<a href='steam://connect/95.143.216.252:27020'>
-											95.143.216.252:27020
-										</a>
-									</td>
-									<NumCell>30</NumCell>
-									<NumCell>4</NumCell>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+				<Monitoring />
 				<Accent>Take Your Left 4 Dead 2 Experience to the Next Level</Accent>
 				<Text>
 					Looking for a true challenge beyond the “Expert Realism” difficulty?
@@ -211,6 +134,25 @@ export default function Home() {
 						Play now
 					</a>
 				</button>
+				<aside className='overflow-hidden flex w-full flex-wrap justify-center'>
+					<div className='flex-grow flex justify-center'>
+						<Image
+							src='/code.svg'
+							width={400}
+							height={400}
+							alt='QR code'
+							title="Don't scan!"
+						/>
+					</div>
+					<Image
+						src='/levi.png'
+						alt='Levi Ackerman'
+						width={393}
+						height={1144}
+						className='translate-y-10'
+						title='Not anime fan, but they say projects work better with it :D'
+					/>
+				</aside>
 			</div>
 			<footer className='shadow-inner shadow-background p-6 text-base bg-black sm:justify-around flex flex-wrap gap-y-4 gap-x-10'>
 				<List>
