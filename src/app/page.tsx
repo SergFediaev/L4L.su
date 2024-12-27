@@ -17,38 +17,40 @@ const SERVERS_ANCHOR = '/#Servers'
 
 export default function Home() {
 	return (
-		<main className='sm:text-2xl text-neutral-50'>
-			<List
-				isColumn={false}
-				className='justify-evenly sticky top-0 bg-black p-4 z-10 shadow-2xl shadow-black backdrop-blur-lg bg-opacity-80'
+		<div className='sm:text-2xl text-neutral-50'>
+			<header className='sticky top-0 bg-black p-4 z-10 shadow-2xl shadow-black backdrop-blur-lg bg-opacity-80'>
+				<List isColumn={false} className='container justify-evenly mx-auto'>
+					<li>
+						<a href={SERVERS_ANCHOR}>Servers</a>
+					</li>
+					<li>
+						<a href='https://steamcommunity.com/groups/Left4Legend/announcements'>
+							News
+						</a>
+					</li>
+					<li>
+						<a href='https://steamcommunity.com/groups/Left4Legend'>Group</a>
+					</li>
+					<li>
+						<a href='https://steamcommunity.com/chat/invite/HWJHvO7g'>Chat</a>
+					</li>
+					<li>
+						<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3384448522'>
+							Guide
+						</a>
+					</li>
+					<li>
+						<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3388609126'>
+							Maps
+						</a>
+					</li>
+				</List>
+			</header>
+			<main
+				id='Servers'
+				className='flex px-8 pt-8 flex-col items-center gap-10'
 			>
-				<li>
-					<a href={SERVERS_ANCHOR}>Servers</a>
-				</li>
-				<li>
-					<a href='https://steamcommunity.com/groups/Left4Legend/announcements'>
-						News
-					</a>
-				</li>
-				<li>
-					<a href='https://steamcommunity.com/groups/Left4Legend'>Group</a>
-				</li>
-				<li>
-					<a href='https://steamcommunity.com/chat/invite/HWJHvO7g'>Chat</a>
-				</li>
-				<li>
-					<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3384448522'>
-						Guide
-					</a>
-				</li>
-				<li>
-					<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3388609126'>
-						Maps
-					</a>
-				</li>
-			</List>
-			<div id='Servers' className='flex px-8 pt-8 flex-col items-center gap-10'>
-				<header className='flex flex-wrap items-center justify-center gap-x-10'>
+				<div className='flex flex-wrap items-center justify-center gap-x-10'>
 					<h1
 						className={`${saira.className} text-center text-6xl antialiased sm:text-8xl glow hover:text-accent transition hover:drop-shadow-[0_0_10px_rgba(0,0,0,1)]`}
 					>
@@ -61,7 +63,7 @@ export default function Home() {
 						height={200}
 						className='glow hover:animate-pulse'
 					/>
-				</header>
+				</div>
 				<Monitoring />
 				<Accent>Take Your Left 4 Dead 2 Experience to the Next Level</Accent>
 				<Text>
@@ -153,64 +155,67 @@ export default function Home() {
 						title='Not anime fan, but they say projects work better with it :D'
 					/>
 				</aside>
-			</div>
-			<footer className='shadow-inner shadow-background p-6 text-base bg-black sm:justify-around flex flex-wrap gap-y-4 gap-x-10'>
-				<List>
-					<li>
-						<a href={SERVERS_ANCHOR}>Monitoring servers</a>
-					</li>
-					<li>
-						<a href='https://steamcommunity.com/groups/Left4Legend/discussions/0/601891362926791888'>
-							Support by donation
-						</a>
-					</li>
-					<li>
-						<a href='https://steamcommunity.com/groups/Left4Legend/discussions/0/601891362926791278'>
-							Report a servers problem
-						</a>
-					</li>
-					<li>
-						<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3384448522'>
-							Complete servers guide
-						</a>
-					</li>
-				</List>
-				<List className='sm:text-center'>
-					<li>
-						© 2022–{new Date().getFullYear()} <a href='https://Sefo.su'>Sefo</a>
-					</li>
-					<li>
-						<q className='italic'>Legends never die!</q>
-					</li>
-					<li>
-						<a href='https://github.com/SefoNotasi/Left4LegendServer'>
-							GitHub servers repository
-						</a>
-					</li>
-				</List>
-				<List>
-					<li>
-						<a href='https://steamcommunity.com/groups/Left4Legend'>
-							Steam community group
-						</a>
-					</li>
-					<li>
-						<a href='https://steamcommunity.com/chat/invite/HWJHvO7g'>
-							Steam community chat
-						</a>
-					</li>
-					<li>
-						<a href='https://steamcommunity.com/groups/Left4Legend/announcements'>
-							Community announcements
-						</a>
-					</li>
-					<li>
-						<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3388609126'>
-							Servers maps collection
-						</a>
-					</li>
-				</List>
+			</main>
+			<footer className='shadow-inner shadow-background p-6 text-base bg-black'>
+				<div className='sm:justify-around flex flex-wrap gap-y-4 gap-x-10 container mx-auto'>
+					<List>
+						<li>
+							<a href={SERVERS_ANCHOR}>Monitoring servers</a>
+						</li>
+						<li>
+							<a href='https://steamcommunity.com/groups/Left4Legend/discussions/0/601891362926791888'>
+								Support by donation
+							</a>
+						</li>
+						<li>
+							<a href='https://steamcommunity.com/groups/Left4Legend/discussions/0/601891362926791278'>
+								Report a servers problem
+							</a>
+						</li>
+						<li>
+							<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3384448522'>
+								Complete servers guide
+							</a>
+						</li>
+					</List>
+					<List className='sm:text-center'>
+						<li>
+							© 2022–{new Date().getFullYear()}{' '}
+							<a href='https://Sefo.su'>Sefo</a>
+						</li>
+						<li>
+							<q className='italic'>Legends never die!</q>
+						</li>
+						<li>
+							<a href='https://github.com/SefoNotasi/Left4LegendServer'>
+								GitHub servers repository
+							</a>
+						</li>
+					</List>
+					<List>
+						<li>
+							<a href='https://steamcommunity.com/groups/Left4Legend'>
+								Steam community group
+							</a>
+						</li>
+						<li>
+							<a href='https://steamcommunity.com/chat/invite/HWJHvO7g'>
+								Steam community chat
+							</a>
+						</li>
+						<li>
+							<a href='https://steamcommunity.com/groups/Left4Legend/announcements'>
+								Community announcements
+							</a>
+						</li>
+						<li>
+							<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3388609126'>
+								Servers maps collection
+							</a>
+						</li>
+					</List>
+				</div>
 			</footer>
-		</main>
+		</div>
 	)
 }
