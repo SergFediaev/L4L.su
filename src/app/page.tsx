@@ -18,7 +18,7 @@ const SERVERS_ANCHOR = '/#Servers'
 
 export default function Home() {
 	return (
-		<main className='sm:text-2xl'>
+		<main className='sm:text-2xl text-neutral-50'>
 			<List
 				isColumn={false}
 				className='justify-evenly sticky top-0 bg-black p-4 z-10 shadow-2xl shadow-black backdrop-blur-lg bg-opacity-80'
@@ -212,7 +212,7 @@ export default function Home() {
 					</a>
 				</button>
 			</div>
-			<footer className='p-6 text-base bg-black sm:justify-around flex flex-wrap gap-y-4 gap-x-10'>
+			<footer className='shadow-inner shadow-background p-6 text-base bg-black sm:justify-around flex flex-wrap gap-y-4 gap-x-10'>
 				<List>
 					<li>
 						<a href={SERVERS_ANCHOR}>Monitoring servers</a>
