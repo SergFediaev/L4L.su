@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
-import type { ReactNode } from 'react'
+import { YandexMetrica } from '@/components/yandexMetrica'
+import { GoogleAnalytics } from '@next/third-parties/google'
+import { type ReactNode, Suspense } from 'react'
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -28,6 +30,10 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
+				<GoogleAnalytics gaId='G-0T8YW7D27K' />
+				<Suspense>
+					<YandexMetrica />
+				</Suspense>
 				{children}
 			</body>
 		</html>
