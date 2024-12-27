@@ -17,7 +17,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
 	title: 'Left 4 Legend',
-	description: 'Left 4 Legend',
+	description: 'Left 4 Legend servers',
+	keywords: [
+		'Left 4 Legend',
+		'L4L',
+		'Lega',
+		'Sef',
+		'Sefo',
+		'Noshimo',
+		'Notasi',
+		'Milandro',
+	],
 }
 
 export default function RootLayout({
