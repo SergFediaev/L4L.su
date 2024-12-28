@@ -1,3 +1,5 @@
+import { Cell } from '@/components/cell'
+import { Row } from '@/components/row'
 import { combine } from '@/utils/combine'
 import type { ComponentPropsWithoutRef } from 'react'
 
@@ -6,12 +8,12 @@ export const Warn = ({
 	...restProps
 }: ComponentPropsWithoutRef<'td'>) => {
 	return (
-		<tr>
-			<td
+		<Row>
+			<Cell
 				colSpan={6}
 				className={combine('text-center text-variant', className)}
 				{...restProps}
 			/>
-		</tr>
+		</Row>
 	)
 }

@@ -1,98 +1,83 @@
-import { NumCell } from '@/components/numCell'
+import type { ServerParams } from '@/api/servers/servers.types'
+import { Accent } from '@/components/accent'
+import { Cell } from '@/components/cell'
+import { Row } from '@/components/row'
 import { Warn } from '@/components/warn'
+import { useGetServer } from '@/hooks/useServers'
 import { combine } from '@/utils/combine'
-import { useEffect, useState } from 'react'
-
-type ServerResponse = {
-	name: string
-	map: string
-	raw: {
-		protocol: number
-		folder: string
-		game: string
-		appId: number
-		numbots: number
-		listentype: string
-		environment: string
-		secure: number
-		steamid: string
-		tags: string[]
-		players: []
-		rules: Record<string, string>
-		rulesBytes: Buffer
-	}
-	version: string
-	maxplayers: number
-	numplayers: number
-	players: []
-	bots: []
-	queryPort: number
-	connect: string
-	ping: number
-}
+import { formatTime } from '@/utils/formatTime'
 
 type Props = {
-	host: string
-	port: number
+	serverParams: ServerParams
 }
 
-export const Server = ({ host, port }: Props) => {
-	const [server, setServer] = useState<ServerResponse>()
-	const [isLoading, setIsLoading] = useState(true)
-	const [error, setError] = useState<string>()
-
-	useEffect(() => {
-		const fetchServer = async () => {
-			try {
-				setIsLoading(true)
-
-				const response = await fetch(`/api/servers?host=${host}&port=${port}`)
-				const server: ServerResponse = await response.json()
-
-				setServer(server)
-			} catch (error) {
-				const message = `Server error: ${error}`
-
-				console.error(message)
-
-				setError(message)
-			} finally {
-				setIsLoading(false)
-			}
-		}
-
-		void fetchServer()
-	}, [host, port])
-
+export const Server = ({ serverParams }: Props) => {
+	const { data, isPending, isError, error } = useGetServer(serverParams)
+	const { host, port } = serverParams
 	const address = `${host}:${port}`
 
-	if (isLoading) {
+	if (isPending) {
 		return <Warn>Loading server {address}</Warn>
 	}
 
-	if (error) {
-		return <Warn>{error}</Warn>
+	if (isError) {
+		return <Warn>{error.message}</Warn>
 	}
 
-	if (!server) {
-		return <Warn>Server not found</Warn>
-	}
+	const { name, numplayers, maxplayers, ping, map, players } = data
 
 	return (
-		<tr>
-			<td>{server.name}</td>
-			<td>
-				<a href={`steam://connect/${address}`}>{address}</a>
-			</td>
-			<NumCell>30</NumCell>
-			<NumCell>
-				<span className={combine(server.numplayers > 0 && 'text-accent')}>
-					{server.numplayers}
-				</span>{' '}
-				/ {server.maxplayers}
-			</NumCell>
-			<NumCell>{server.ping}</NumCell>
-			<td>{server.map}</td>
-		</tr>
+		<>
+			<Row isHighlighted>
+				<Cell>{name}</Cell>
+				<Cell>
+					<a href={`steam://connect/${address}`}>{address}</a>
+				</Cell>
+				<Cell isRightAligned>30</Cell>
+				<Cell isRightAligned>
+					<span className={combine(numplayers > 0 && 'text-accent')}>
+						{numplayers}
+					</span>{' '}
+					/ {maxplayers}
+				</Cell>
+				<Cell isRightAligned>{ping}</Cell>
+				<Cell>{map}</Cell>
+			</Row>
+			{players.length > 0 && (
+				<Row>
+					<Cell colSpan={6} align='right' hasPadding={false} className='pb-10'>
+						<table className='text-left'>
+							<thead>
+								<Row>
+									<Cell colSpan={3} align='right'>
+										<Accent>Players</Accent>
+									</Cell>
+								</Row>
+							</thead>
+							<thead>
+								<Row>
+									<Cell as='th'>Nickname</Cell>
+									<Cell as='th' isRightAligned>
+										Played
+									</Cell>
+									<Cell as='th' isRightAligned>
+										Score
+									</Cell>
+								</Row>
+							</thead>
+							<tbody>
+								{players.map(({ name, raw: { time, score } }, index) => (
+									<Row key={`${index}-${name}-${time}-${score}`} isHighlighted>
+										<Cell>{name}</Cell>
+										<Cell isRightAligned>{formatTime(time)}</Cell>
+										<Cell isRightAligned>{score}</Cell>
+									</Row>
+								))}
+							</tbody>
+						</table>
+					</Cell>
+				</Row>
+			)}
+		</>
 	)
 }

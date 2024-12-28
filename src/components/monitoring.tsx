@@ -1,10 +1,10 @@
+import type { ServerParams } from '@/api/servers/servers.types'
 import { Accent } from '@/components/accent'
+import { Cell } from '@/components/cell'
+import { Row } from '@/components/row'
 import { Server } from '@/components/server'
 
-const SERVERS: {
-	host: string
-	port: number
-}[] = [
+const SERVERS: ServerParams[] = [
 	{
 		host: '95.143.216.252',
 		port: 27021,
@@ -32,26 +32,34 @@ const SERVERS: {
 ] as const
 
 export const Monitoring = () => {
-	const servers = SERVERS.map(({ host, port }) => (
-		<Server key={port} host={host} port={port} />
+	const servers = SERVERS.map((server, index) => (
+		<Server key={`${index}-${server.port}`} serverParams={server} />
 	))
 
 	return (
 		<div className='max-w-full mb-32'>
-			<Accent className='text-center'>Servers monitoring</Accent>
-			<div className='overflow-x-auto'>
-				<table className='text-left sm:border-spacing-y-4 sm:border-spacing-x-8 border-spacing-x-4 border-spacing-y-2 border-separate'>
+			<Accent className='text-center' title='Auto refresh every 30 seconds'>
+				Online servers monitoring
+			</Accent>
+			<div className='overflow-x-auto p-1'>
+				<table className='text-left'>
 					<thead className='align-top'>
-						<tr>
-							<th>Server name</th>
-							<th>Click to connect</th>
-							<th title='Tickrate'>Tick</th>
-							<th title='Current / Max'>Players</th>
-							<th>Ping</th>
-							<th>Map</th>
-						</tr>
+						<Row>
+							<Cell as='th'>Server name</Cell>
+							<Cell as='th'>Click to connect</Cell>
+							<Cell as='th' isRightAligned title='Tickrate'>
+								Tick
+							</Cell>
+							<Cell as='th' isRightAligned title='Current / Max'>
+								Players
+							</Cell>
+							<Cell as='th' isRightAligned>
+								Ping
+							</Cell>
+							<Cell as='th'>Map</Cell>
+						</Row>
 					</thead>
-					<tbody className='align-top'>{servers}</tbody>
+					<tbody className='align-baseline'>{servers}</tbody>
 				</table>
 			</div>
 		</div>

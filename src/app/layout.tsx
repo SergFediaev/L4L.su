@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
+import { Providers } from '@/app/providers'
 import { YandexMetrica } from '@/components/yandexMetrica'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { type ReactNode, Suspense } from 'react'
@@ -44,7 +45,7 @@ export default function RootLayout({
 				<Suspense>
 					<YandexMetrica />
 				</Suspense>
-				{children}
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	)
