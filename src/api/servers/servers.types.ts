@@ -24,15 +24,17 @@ export type ServerResponse = {
 	version: string
 	maxplayers: number
 	numplayers: number
-	players: {
-		name: string
-		raw: {
-			score: number
-			time: number
-		}
-	}[]
+	players: Player[]
 	bots: []
 	queryPort: number
 	connect: string
 	ping: number
+}
+
+export type Player = {
+	name: string
+	raw: {
+		score: number
+		time: number
+	}
 }

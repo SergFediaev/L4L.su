@@ -1,20 +1,13 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { Providers } from '@/app/providers'
+import { Body } from '@/components/body'
+import { Footer } from '@/components/footer'
+import { Header } from '@/components/header'
+import { Main } from '@/components/main'
 import { YandexMetrica } from '@/components/yandexMetrica'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { type ReactNode, Suspense } from 'react'
-
-const geistSans = Geist({
-	variable: '--font-geist-sans',
-	subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-	variable: '--font-geist-mono',
-	subsets: ['latin'],
-})
 
 export const metadata: Metadata = {
 	title: 'Left 4 Legend',
@@ -38,15 +31,17 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-			>
+			<Body>
 				<GoogleAnalytics gaId='G-0T8YW7D27K' />
 				<Suspense>
 					<YandexMetrica />
 				</Suspense>
-				<Providers>{children}</Providers>
-			</body>
+				<Providers>
+					<Header />
+					<Main>{children}</Main>
+					<Footer />
+				</Providers>
+			</Body>
 		</html>
 	)
 }
