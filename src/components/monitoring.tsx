@@ -50,7 +50,7 @@ export const Monitoring = () => {
 	return (
 		<div className='max-w-full'>
 			<div className='p-2 sm:p-4 flex justify-between gap-2 flex-wrap'>
-				<Accent className='text-center' title='Auto refresh every 30 seconds'>
+				<Accent title='Auto refresh every 30 seconds'>
 					Online servers monitoring
 				</Accent>
 				<button

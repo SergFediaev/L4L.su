@@ -25,6 +25,8 @@ const ROTATES = [
 	'-rotate-45',
 ] as const
 
+const SERVERS = '/#Servers'
+
 export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 	const [rotate, setRotate] = useState<(typeof ROTATES)[number]>('rotate-0')
 
@@ -138,10 +140,7 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 						className='shadow-lg shadow-black transition text-black hover:bg-variant hover:glow px-4 py-2 bg-accent rounded-2xl hover:shadow-none'
 						title='Play on random server'
 					>
-						<a
-							href='steam://connect/95.143.216.252:27021'
-							className='no-underline hover:text-black'
-						>
+						<a href={SERVERS} className='no-underline hover:text-black'>
 							Play now
 						</a>
 					</button>
@@ -150,7 +149,7 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 			<section className='bg-background px-8 pt-20 gap-10 overflow-hidden flex flex-wrap justify-center'>
 				<aside className='flex flex-col items-center justify-center gap-10'>
 					<a
-						href='/#Servers'
+						href={SERVERS}
 						className='text-4xl sm:text-8xl font-black underline-offset-8'
 					>
 						Now playing!
