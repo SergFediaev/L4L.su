@@ -25,6 +25,7 @@
 ## 🎨 UI/UX
 
 - Tailwind CSS.
+- Lucide Icons.
 - Mobile-First.
 - **Responsive** & **Adaptive** web design.
 - HTML5 Semantics.

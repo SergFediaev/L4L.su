@@ -1,6 +1,7 @@
 import type { ServerParams } from '@/api/servers/servers.types'
-import { Accent } from '@/components/accent'
+import { Button } from '@/components/button'
 import { Cell } from '@/components/cell'
+import { Heading } from '@/components/heading'
 import { Row } from '@/components/row'
 import { Server } from '@/components/server'
 import { useState } from 'react'
@@ -50,23 +51,17 @@ export const Monitoring = () => {
 	return (
 		<div className='max-w-full'>
 			<div className='p-2 sm:p-4 flex justify-between gap-2 flex-wrap'>
-				<Accent title='Auto refresh every 30 seconds'>
+				<Heading as='h2' title='Auto refresh every 30 seconds'>
 					Online servers monitoring
-				</Accent>
-				<button
-					type='button'
-					onClick={toggleIsPlayersShown}
-					className='transition text-black hover:bg-variant px-2 sm:px-4 bg-accent rounded-2xl'
-				>
-					{playersText}
-				</button>
+				</Heading>
+				<Button onClick={toggleIsPlayersShown}>{playersText}</Button>
 			</div>
 			<div className='overflow-x-auto p-1'>
 				<table className='text-left'>
 					<thead className='align-top'>
 						<Row>
 							<Cell as='th'>Server name</Cell>
-							<Cell as='th'>Click to connect</Cell>
+							<Cell as='th'>IP address : port</Cell>
 							<Cell as='th' isRightAligned title='Tickrate'>
 								Tick
 							</Cell>
@@ -77,6 +72,7 @@ export const Monitoring = () => {
 								Ping
 							</Cell>
 							<Cell as='th'>Map</Cell>
+							<Cell as='th'>Status</Cell>
 						</Row>
 					</thead>
 					<tbody className='align-baseline'>{servers}</tbody>

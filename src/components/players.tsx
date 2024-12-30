@@ -1,6 +1,6 @@
 import type { Player } from '@/api/servers/servers.types'
-import { Accent } from '@/components/accent'
 import { Cell } from '@/components/cell'
+import { Heading } from '@/components/heading'
 import { Row } from '@/components/row'
 import { formatTime } from '@/utils/formatTime'
 
@@ -23,12 +23,12 @@ export const Players = (props: Props) => {
 
 	return (
 		<Row>
-			<Cell colSpan={6} align='right' hasPadding={false} className='pb-10'>
+			<Cell colSpan={7} align='right' hasPadding={false} className='pb-10'>
 				<table className='text-left'>
 					<thead>
 						<Row>
 							<Cell colSpan={3} align='right'>
-								<Accent>Players</Accent>
+								<Heading as='h4'>Players</Heading>
 							</Cell>
 						</Row>
 					</thead>

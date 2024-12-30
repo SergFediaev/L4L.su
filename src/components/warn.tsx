@@ -10,8 +10,8 @@ export const Warn = ({
 	return (
 		<Row>
 			<Cell
-				colSpan={6}
-				className={combine('text-center text-variant', className)}
+				colSpan={7}
+				className={combine('text-variant', className)}
 				{...restProps}
 			/>
 		</Row>
