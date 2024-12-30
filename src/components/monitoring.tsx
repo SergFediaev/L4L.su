@@ -37,7 +37,7 @@ export const Monitoring = () => {
 	))
 
 	return (
-		<div className='max-w-full mb-32'>
+		<div className='max-w-full'>
 			<Accent className='text-center' title='Auto refresh every 30 seconds'>
 				Online servers monitoring
 			</Accent>

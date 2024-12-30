@@ -11,7 +11,7 @@
 
 ## 🚀 Стек Bleeding Edge технологий
 
-- **Next.js** 15+ (App Router).
+- **Next.js 15**+ (App Router).
 - React 19.
 - TypeScript.
 - **Bun** — runtime, package manager & bundler.
