@@ -10,9 +10,10 @@ import { useGetServer } from '@/hooks/useServers'
 
 type Props = {
 	serverParams: ServerParams
+	isPlayersShown: boolean
 }
 
-export const Server = ({ serverParams }: Props) => {
+export const Server = ({ serverParams, isPlayersShown }: Props) => {
 	const { data, isPending, isError, error } = useGetServer(serverParams)
 	const { host, port } = serverParams
 	const address = `${host}:${port}`
@@ -39,7 +40,7 @@ export const Server = ({ serverParams }: Props) => {
 				<Cell isRightAligned>{ping}</Cell>
 				<Cell>{map}</Cell>
 			</Row>
-			<Players players={players} />
+			{isPlayersShown && <Players players={players} />}
 		</>
 	)
 }

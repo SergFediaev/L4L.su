@@ -3,6 +3,7 @@ import { Accent } from '@/components/accent'
 import { Cell } from '@/components/cell'
 import { Row } from '@/components/row'
 import { Server } from '@/components/server'
+import { useState } from 'react'
 
 const SERVERS: ServerParams[] = [
 	{
@@ -32,15 +33,34 @@ const SERVERS: ServerParams[] = [
 ] as const
 
 export const Monitoring = () => {
+	const [isPlayersShown, setIsPlayersShown] = useState(true)
+
 	const servers = SERVERS.map((server, index) => (
-		<Server key={`${index}-${server.port}`} serverParams={server} />
+		<Server
+			key={`${index}-${server.port}`}
+			serverParams={server}
+			isPlayersShown={isPlayersShown}
+		/>
 	))
+
+	const playersText = isPlayersShown ? 'Hide players' : 'Show players'
+
+	const toggleIsPlayersShown = () => setIsPlayersShown(!isPlayersShown)
 
 	return (
 		<div className='max-w-full'>
-			<Accent className='text-center' title='Auto refresh every 30 seconds'>
-				Online servers monitoring
-			</Accent>
+			<div className='p-2 sm:p-4 flex justify-between gap-2 flex-wrap'>
+				<Accent className='text-center' title='Auto refresh every 30 seconds'>
+					Online servers monitoring
+				</Accent>
+				<button
+					type='button'
+					onClick={toggleIsPlayersShown}
+					className='transition text-black hover:bg-variant px-2 sm:px-4 bg-accent rounded-2xl'
+				>
+					{playersText}
+				</button>
+			</div>
 			<div className='overflow-x-auto p-1'>
 				<table className='text-left'>
 					<thead className='align-top'>

@@ -1,19 +1,40 @@
+'use client'
+
 import { Accent } from '@/components/accent'
 import { Monitoring } from '@/components/monitoring'
 import { Review } from '@/components/review'
 import { Section } from '@/components/section'
 import { Text } from '@/components/text'
 import { Video } from '@/components/video'
+import { combine } from '@/utils/combine'
 import { Saira_Stencil_One } from 'next/font/google'
 import Image from 'next/image'
-import type { ComponentPropsWithoutRef } from 'react'
+import { type ComponentPropsWithoutRef, useState } from 'react'
 
 const saira = Saira_Stencil_One({
 	subsets: ['latin'],
 	weight: '400',
 })
 
+const ROTATES = [
+	'rotate-0',
+	'rotate-45',
+	'rotate-90',
+	'rotate-180',
+	'-rotate-90',
+	'-rotate-45',
+] as const
+
 export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
+	const [rotate, setRotate] = useState<(typeof ROTATES)[number]>('rotate-0')
+
+	const randomRotate = () => {
+		const rotates = ROTATES.filter(rotation => rotation !== rotate)
+		const randomIndex = Math.floor(Math.random() * rotates.length)
+
+		setRotate(rotates[randomIndex])
+	}
+
 	return (
 		<main id='Servers' {...props}>
 			<div className='justify-center min-h-svh px-8 py-20 gap-10 bg-background shadow-inner shadow-black flex flex-col items-center'>
@@ -28,7 +49,13 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 						alt='Logo'
 						width={400}
 						height={525}
-						className='glow hover:animate-pulse w-24'
+						className={combine(
+							'transition duration-1000 glow hover:animate-pulse w-28 cursor-pointer',
+							rotate,
+						)}
+						onClick={randomRotate}
+						onMouseEnter={randomRotate}
+						priority
 					/>
 				</div>
 				<Monitoring />
