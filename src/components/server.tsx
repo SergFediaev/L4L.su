@@ -9,8 +9,15 @@ import { PlayersCount } from '@/components/playersCount'
 import { Row } from '@/components/row'
 import { Warn } from '@/components/warn'
 import { useGetServer } from '@/hooks/useServers'
-import { Copy, CopyCheck, Gamepad2, ShieldCheck } from 'lucide-react'
-import { useState } from 'react'
+import {
+	Copy,
+	CopyCheck,
+	Eye,
+	EyeOff,
+	Gamepad2,
+	ShieldCheck,
+} from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 const CONNECT_TITLE = 'Connect to server'
 
@@ -19,20 +26,29 @@ type Props = {
 	isPlayersShown: boolean
 }
 
-export const Server = ({ serverParams, isPlayersShown }: Props) => {
+export const Server = ({ serverParams, ...restProps }: Props) => {
+	const [isPlayersShown, setIsPlayersShown] = useState(restProps.isPlayersShown)
 	const [isCopied, setIsCopied] = useState(false)
 	const { data, isPending, isRefetching, isError, error } =
 		useGetServer(serverParams)
 
+	useEffect(() => {
+		setIsPlayersShown(restProps.isPlayersShown)
+	}, [restProps.isPlayersShown])
+
 	const { host, port } = serverParams
 	const address = `${host}:${port}`
 	const connect = `steam://connect/${address}`
-	const icon = isCopied ? <CopyCheck /> : <Copy />
+	const copyIcon = isCopied ? <CopyCheck /> : <Copy />
 	const status = isRefetching ? (
 		<Loader isAccent title='Refreshing' />
 	) : (
 		<ShieldCheck />
 	)
+
+	const toggleIsPlayersShown = () => {
+		setIsPlayersShown(!isPlayersShown)
+	}
 
 	const copy = async () => {
 		try {
@@ -59,6 +75,13 @@ export const Server = ({ serverParams, isPlayersShown }: Props) => {
 	}
 
 	const { name, numplayers, maxplayers, ping, map, players } = data
+	const hasNotPlayers = numplayers === 0
+	const playersIcon = isPlayersShown ? <EyeOff /> : <Eye />
+	const playersTitle = hasNotPlayers
+		? undefined
+		: isPlayersShown
+			? 'Hide players'
+			: 'Show players'
 
 	return (
 		<>
@@ -73,17 +96,27 @@ export const Server = ({ serverParams, isPlayersShown }: Props) => {
 						onClick={copy}
 						title='Copy server address to clipboard'
 					>
-						{icon}
+						{copyIcon}
 					</Button>
 					<Button variant='icon' as='a' href={connect} title={CONNECT_TITLE}>
 						<Gamepad2 />
 					</Button>
 				</Cell>
 				<Cell isRightAligned>30</Cell>
-				<PlayersCount numplayers={numplayers} maxplayers={maxplayers} />
+				<Cell isRightAligned className='flex gap-4'>
+					<PlayersCount numplayers={numplayers} maxplayers={maxplayers} />
+					<Button
+						variant='icon'
+						onClick={toggleIsPlayersShown}
+						title={playersTitle}
+						disabled={hasNotPlayers}
+					>
+						{playersIcon}
+					</Button>
+				</Cell>
 				<Cell isRightAligned>{ping}</Cell>
 				<Cell>{map}</Cell>
-				<Cell>{status}</Cell>
+				<Cell className='align-middle'>{status}</Cell>
 			</Row>
 			{isPlayersShown && <Players players={players} />}
 		</>

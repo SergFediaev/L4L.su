@@ -35,7 +35,7 @@ body {
 	}
 
 	::selection {
-		@apply bg-black text-variant;
+		@apply text-black bg-variant;
 	}
 }
 

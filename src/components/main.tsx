@@ -1,123 +1,26 @@
 'use client'
 
 import { Button } from '@/components/button'
+import { Campaigns } from '@/components/campaigns'
 import { Heading } from '@/components/heading'
+import { Logo } from '@/components/logo'
 import { Monitoring } from '@/components/monitoring'
 import { Review } from '@/components/review'
 import { Section } from '@/components/section'
 import { Text } from '@/components/text'
 import { Video } from '@/components/video'
-import { combine } from '@/utils/combine'
-import { filterValues } from '@/utils/filterValues'
-import { getRandomIndex } from '@/utils/getRandomIndex'
-import { Saira_Stencil_One } from 'next/font/google'
 import Image from 'next/image'
-import { type ComponentPropsWithoutRef, useState } from 'react'
-
-const saira = Saira_Stencil_One({
-	subsets: ['latin'],
-	weight: '400',
-})
-
-const CAMPAIGNS = [
-	'Dead Center',
-	'The Passing',
-	'Dark Carnival',
-	'Swamp Fever',
-	'Hard Rain',
-	'The Parish',
-	'Cold Stream',
-	'No Mercy',
-	'Crash Course',
-	'Death Toll',
-	'Dead Air',
-	'Blood Harvest',
-	'The Sacrifice',
-	'The Last Stand',
-] as const
-
-const ROTATES = [
-	'rotate-0',
-	'rotate-45',
-	'rotate-90',
-	'rotate-180',
-	'-rotate-90',
-	'-rotate-45',
-] as const
+import type { ComponentPropsWithoutRef } from 'react'
 
 const SERVERS = '/#Servers'
 
 export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
-	const [campaign, setCampaign] = useState<(typeof CAMPAIGNS)[number]>()
-	const [rotate, setRotate] = useState<(typeof ROTATES)[number]>()
-	const [isRandomizing, setIsRandomizing] = useState(false)
-
-	const randomCampaignText = isRandomizing
-		? 'Randomizing campaign'
-		: 'Random official campaign'
-
-	const randomCampaign = () => {
-		setIsRandomizing(true)
-
-		if (campaign) {
-			setCampaign(undefined)
-		}
-
-		setTimeout(() => {
-			const campaigns = filterValues(CAMPAIGNS, campaign)
-			const randomIndex = getRandomIndex(campaigns)
-
-			setCampaign(campaigns[randomIndex])
-			setIsRandomizing(false)
-		}, 2_000)
-	}
-
-	const randomRotate = () => {
-		const rotates = filterValues(ROTATES, rotate)
-		const randomIndex = getRandomIndex(rotates)
-
-		setRotate(rotates[randomIndex])
-	}
-
 	return (
 		<main id='Servers' {...props}>
 			<div className='justify-center min-h-svh px-8 py-20 gap-10 bg-background shadow-inner shadow-black flex flex-col items-center'>
-				<div className='flex flex-wrap items-center justify-center gap-x-10'>
-					<Heading
-						as='h1'
-						isLarge={false}
-						isAccent={false}
-						isBold={false}
-						className={`${saira.className} text-center text-6xl antialiased sm:text-8xl glow hover:text-accent transition hover:drop-shadow-[0_0_10px_rgba(0,0,0,1)]`}
-					>
-						Left 4 Legend
-					</Heading>
-					<Image
-						src='/logo.svg'
-						alt='Logo'
-						width={400}
-						height={525}
-						className={combine(
-							'transition duration-1000 glow hover:animate-pulse w-28 cursor-pointer',
-							rotate,
-						)}
-						onClick={randomRotate}
-						onMouseEnter={randomRotate}
-						priority
-					/>
-				</div>
+				<Logo />
 				<Monitoring />
-				<div className='flex flex-col items-center gap-5'>
-					<Heading as='h4'>Can't choose a campaign to play?</Heading>
-					<Button
-						variant='lead'
-						onClick={randomCampaign}
-						isLoading={isRandomizing}
-					>
-						{randomCampaignText}
-					</Button>
-					{campaign && <span className='animate-pulse'>{campaign}</span>}
-				</div>
+				<Campaigns />
 			</div>
 			<Video />
 			<div className='bg-black'>

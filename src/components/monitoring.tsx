@@ -44,7 +44,9 @@ export const Monitoring = () => {
 		/>
 	))
 
-	const playersText = isPlayersShown ? 'Hide players' : 'Show players'
+	const playersText = isPlayersShown
+		? 'Always hide players'
+		: 'Always show players'
 
 	const toggleIsPlayersShown = () => setIsPlayersShown(!isPlayersShown)
 

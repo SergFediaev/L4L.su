@@ -1,8 +1,8 @@
 import type { Player } from '@/api/servers/servers.types'
 import { Cell } from '@/components/cell'
 import { Heading } from '@/components/heading'
+import { Played } from '@/components/played'
 import { Row } from '@/components/row'
-import { formatTime } from '@/utils/formatTime'
 
 type Props = {
 	players: Player[]
@@ -16,7 +16,9 @@ export const Players = (props: Props) => {
 	const players = props.players.map(({ name, raw: { time, score } }, index) => (
 		<Row key={`${index}-${name}-${time}-${score}`} isHighlighted>
 			<Cell>{name}</Cell>
-			<Cell isRightAligned>{formatTime(time)}</Cell>
+			<Cell isRightAligned>
+				<Played time={time} />
+			</Cell>
 			<Cell isRightAligned>{score}</Cell>
 		</Row>
 	))

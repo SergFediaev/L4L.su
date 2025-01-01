@@ -1,4 +1,3 @@
-import { Cell } from '@/components/cell'
 import { combine } from '@/utils/combine'
 
 type Props = {
@@ -10,9 +9,9 @@ export const PlayersCount = ({ numplayers, maxplayers }: Props) => {
 	const hasPlayers = numplayers > 0
 
 	return (
-		<Cell isRightAligned>
+		<span>
 			<span className={combine(hasPlayers && 'text-accent')}>{numplayers}</span>{' '}
 			/ {maxplayers}
-		</Cell>
+		</span>
 	)
 }

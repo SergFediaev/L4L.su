@@ -32,6 +32,7 @@ export const Button = <T extends ElementType = typeof DEFAULT_TYPE>({
 					'shadow-lg shadow-black text-black hover:bg-variant hover:glow px-4 py-2 bg-accent hover:shadow-none',
 				variant === 'icon' && 'text-accent hover:text-variant',
 				isLoading && 'cursor-progress',
+				disabled && 'opacity-50 hover:text-accent',
 				className,
 			)}
 			{...restProps}
