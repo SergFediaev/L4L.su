@@ -116,7 +116,9 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 				</Cell>
 				<Cell isRightAligned>{ping}</Cell>
 				<Cell>{map}</Cell>
-				<Cell className='align-middle'>{status}</Cell>
+				<Cell className='align-middle'>
+					<span className='flex justify-end'>{status}</span>
+				</Cell>
 			</Row>
 			{isPlayersShown && <Players players={players} />}
 		</>

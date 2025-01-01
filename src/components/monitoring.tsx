@@ -74,7 +74,9 @@ export const Monitoring = () => {
 								Ping
 							</Cell>
 							<Cell as='th'>Map</Cell>
-							<Cell as='th'>Status</Cell>
+							<Cell as='th' isRightAligned>
+								Status
+							</Cell>
 						</Row>
 					</thead>
 					<tbody className='align-baseline'>{servers}</tbody>
