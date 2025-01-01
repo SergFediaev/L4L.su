@@ -86,7 +86,7 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 	return (
 		<>
 			<Row isHighlighted>
-				<Cell>{name}</Cell>
+				<Cell className='text-nowrap'>{name}</Cell>
 				<Cell className='flex gap-4'>
 					<a href={connect} title={CONNECT_TITLE} className='font-mono'>
 						{address}
