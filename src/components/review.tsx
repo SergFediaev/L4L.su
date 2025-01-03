@@ -13,7 +13,7 @@ export const Review = ({
 }: Props) => {
 	return (
 		<p
-			className={combine('text-4xl italic -rotate-3', className)}
+			className={combine('-rotate-3 text-4xl italic', className)}
 			{...restProps}
 		>
 			<q>{children}</q>

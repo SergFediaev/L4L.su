@@ -10,7 +10,7 @@ export const Row = ({ isHighlighted, className, ...restProps }: Props) => {
 		<tr
 			className={combine(
 				isHighlighted &&
-					'transition hover:outline hover:outline-1 hover:outline-variant hover:bg-black',
+					'transition hover:bg-black hover:outline hover:outline-1 hover:outline-variant',
 				className,
 			)}
 			{...restProps}

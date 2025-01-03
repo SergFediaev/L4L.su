@@ -14,13 +14,13 @@ export const Video = ({ isDarkened, className, ...restProps }: Props) => {
 				loop
 				autoPlay
 				className={combine(
-					'relative w-full min-h-svh object-cover -z-20',
+					'-z-20 relative min-h-svh w-full object-cover',
 					className,
 				)}
 				{...restProps}
 			/>
 			{isDarkened && (
-				<div className='fixed inset-0 bg-black bg-opacity-50 -z-10' />
+				<div className='-z-10 fixed inset-0 bg-black bg-opacity-50' />
 			)}
 		</>
 	)

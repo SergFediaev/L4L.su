@@ -25,11 +25,11 @@ export const Button = <T extends ElementType = typeof DEFAULT_TYPE>({
 		<Component
 			disabled={disabled || isLoading}
 			className={combine(
-				'transition no-underline hover:text-black flex items-center gap-2 rounded-2xl',
+				'flex items-center gap-2 rounded-2xl no-underline transition hover:text-black',
 				variant === 'primary' &&
-					'text-black hover:bg-variant px-2 sm:px-4 bg-accent',
+					'bg-accent px-2 text-black hover:bg-variant sm:px-4',
 				variant === 'lead' &&
-					'shadow-lg shadow-black text-black hover:bg-variant hover:glow px-4 py-2 bg-accent hover:shadow-none',
+					'hover:glow bg-accent px-4 py-2 text-black shadow-black shadow-lg hover:bg-variant hover:shadow-none',
 				variant === 'icon' && 'text-accent hover:text-variant',
 				isLoading && 'cursor-progress',
 				disabled && 'opacity-50 hover:text-accent',

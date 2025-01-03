@@ -14,7 +14,7 @@ export const Body = ({
 	return (
 		<body
 			className={combine(
-				`${inter.className} antialiased sm:text-2xl text-neutral-50`,
+				`${inter.className} text-neutral-50 antialiased sm:text-2xl`,
 				className,
 			)}
 			{...restProps}

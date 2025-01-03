@@ -43,7 +43,7 @@ export const Logo = () => {
 				isAccent={false}
 				isBold={false}
 				className={combine(
-					`${saira.className} text-center text-6xl antialiased sm:text-8xl transition duration-1000 cursor-pointer`,
+					`${saira.className} cursor-pointer text-center text-6xl antialiased transition duration-1000 sm:text-8xl`,
 					isLighted && 'glow',
 				)}
 				onClick={toggleIsLighted}
@@ -56,7 +56,7 @@ export const Logo = () => {
 				width={400}
 				height={525}
 				className={combine(
-					'transition duration-1000 hover:animate-pulse w-28 cursor-pointer',
+					'w-28 cursor-pointer transition duration-1000 hover:animate-pulse',
 					rotate,
 					isLighted && 'glow',
 				)}

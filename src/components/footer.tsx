@@ -9,12 +9,12 @@ export const Footer = ({
 	return (
 		<footer
 			className={combine(
-				'shadow-inner shadow-background p-6 text-base bg-black',
+				'bg-black p-6 text-base shadow-background shadow-inner',
 				className,
 			)}
 			{...restProps}
 		>
-			<div className='sm:justify-around flex flex-wrap gap-y-4 gap-x-10 container mx-auto'>
+			<div className='container mx-auto flex flex-wrap gap-x-10 gap-y-4 sm:justify-around'>
 				<List>
 					<li>
 						<a href='/#Servers'>Monitoring servers</a>

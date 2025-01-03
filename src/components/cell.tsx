@@ -21,7 +21,7 @@ export const Cell = <T extends ElementType = typeof DEFAULT_TYPE>({
 	return (
 		<Component
 			className={combine(
-				hasPadding && 'py-1 sm:py-2 px-2 sm:px-4',
+				hasPadding && 'px-2 py-1 sm:px-4 sm:py-2',
 				isRightAligned && 'text-right',
 				className,
 			)}

@@ -9,12 +9,12 @@ export const Header = ({
 	return (
 		<header
 			className={combine(
-				'sticky top-0 bg-black p-4 z-10 shadow-2xl shadow-black backdrop-blur-lg bg-opacity-80',
+				'sticky top-0 z-10 bg-black bg-opacity-80 p-4 shadow-2xl shadow-black backdrop-blur-lg',
 				className,
 			)}
 			{...restProps}
 		>
-			<List isColumn={false} className='container justify-evenly mx-auto'>
+			<List isColumn={false} className='container mx-auto justify-evenly'>
 				<li>
 					<a href='/#Servers'>Servers</a>
 				</li>

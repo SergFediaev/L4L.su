@@ -52,7 +52,7 @@ export const Monitoring = () => {
 
 	return (
 		<div className='max-w-full'>
-			<div className='p-2 sm:p-4 flex justify-between gap-2 flex-wrap'>
+			<div className='flex flex-wrap justify-between gap-2 p-2 sm:p-4'>
 				<Heading as='h2' title='Auto refresh every 30 seconds'>
 					Online servers monitoring
 				</Heading>

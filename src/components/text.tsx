@@ -6,6 +6,6 @@ export const Text = ({
 	...restProps
 }: ComponentPropsWithoutRef<'p'>) => {
 	return (
-		<p className={combine('indent-10 max-w-2xl', className)} {...restProps} />
+		<p className={combine('max-w-2xl indent-10', className)} {...restProps} />
 	)
 }

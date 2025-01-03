@@ -17,7 +17,7 @@ const SERVERS = '/#Servers'
 export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 	return (
 		<main id='Servers' {...props}>
-			<div className='justify-center min-h-svh px-8 py-20 gap-10 bg-background shadow-inner shadow-black flex flex-col items-center'>
+			<div className='flex min-h-svh flex-col items-center justify-center gap-10 bg-background px-8 py-20 shadow-black shadow-inner'>
 				<Logo />
 				<Monitoring />
 				<Campaigns />
@@ -102,11 +102,11 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 					</Button>
 				</aside>
 			</div>
-			<section className='bg-background px-8 pt-20 gap-10 overflow-hidden flex flex-wrap justify-center'>
+			<section className='flex flex-wrap justify-center gap-10 overflow-hidden bg-background px-8 pt-20'>
 				<aside className='flex flex-col items-center justify-center gap-10'>
 					<a
 						href={SERVERS}
-						className='text-4xl sm:text-8xl font-black underline-offset-8'
+						className='font-black text-4xl underline-offset-8 sm:text-8xl'
 					>
 						Now playing!
 					</a>
