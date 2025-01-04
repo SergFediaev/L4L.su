@@ -26,6 +26,8 @@
 
 - Tailwind CSS.
 - Lucide Icons.
+- **Floating UI** — tooltips.
+- **Flicking** — carousel.
 - Mobile-First.
 - **Responsive** & **Adaptive** web design.
 - HTML5 Semantics.
