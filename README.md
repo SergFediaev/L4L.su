@@ -16,6 +16,7 @@
 - TypeScript.
 - **Bun** — runtime, package manager & bundler.
 - **Biome** — formatter & linter.
+- **Next-Intl** — internationalization.
 - **Ky** — HTTP client.
 - **TanStack Query** — server-state management.
 - **GameDig** — game server query.
