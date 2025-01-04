@@ -5,6 +5,7 @@ import { Campaigns } from '@/components/campaigns'
 import { Carousel } from '@/components/carousel'
 import { Logo } from '@/components/logo'
 import { Monitoring } from '@/components/monitoring'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
 import { Video } from '@/components/video'
 import Image from 'next/image'
 import type { ComponentPropsWithoutRef } from 'react'
@@ -36,22 +37,27 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 					>
 						Now playing!
 					</a>
-					<Image
-						src='/code.svg'
-						width={400}
-						height={400}
-						alt='QR code'
-						title="Don't scan!"
-					/>
+					<Tooltip placement='bottom'>
+						<TooltipTrigger asChild>
+							<Image src='/code.svg' width={400} height={400} alt='QR code' />
+							<TooltipContent>Don't scan!</TooltipContent>
+						</TooltipTrigger>
+					</Tooltip>
 				</aside>
-				<Image
-					src='/levi.png'
-					alt='Levi Ackerman'
-					width={393}
-					height={1144}
-					className='translate-y-10'
-					title='Not anime fan, but they say projects work better with it :D'
-				/>
+				<Tooltip>
+					<TooltipTrigger asChild>
+						<Image
+							src='/levi.png'
+							alt='Levi Ackerman'
+							width={393}
+							height={1144}
+							className='translate-y-10'
+						/>
+					</TooltipTrigger>
+					<TooltipContent>
+						Not anime fan, but they say projects work better with it :D
+					</TooltipContent>
+				</Tooltip>
 			</section>
 		</main>
 	)

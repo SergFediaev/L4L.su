@@ -4,6 +4,7 @@ import { Cell } from '@/components/cell'
 import { Heading } from '@/components/heading'
 import { Row } from '@/components/row'
 import { Server } from '@/components/server'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
 import { useState } from 'react'
 
 const SERVERS: ServerParams[] = [
@@ -53,9 +54,12 @@ export const Monitoring = () => {
 	return (
 		<div className='max-w-full'>
 			<div className='flex flex-wrap justify-between gap-2 p-2 sm:p-4'>
-				<Heading as='h2' title='Auto refresh every 30 seconds'>
-					Online servers monitoring
-				</Heading>
+				<Tooltip>
+					<TooltipTrigger asChild>
+						<Heading as='h2'>Online servers monitoring</Heading>
+						<TooltipContent>Auto refresh every 30 seconds</TooltipContent>
+					</TooltipTrigger>
+				</Tooltip>
 				<Button onClick={toggleIsPlayersShown}>{playersText}</Button>
 			</div>
 			<div className='overflow-x-auto p-1'>
@@ -64,12 +68,22 @@ export const Monitoring = () => {
 						<Row>
 							<Cell as='th'>Server name</Cell>
 							<Cell as='th'>IP address : port</Cell>
-							<Cell as='th' isRightAligned title='Tickrate'>
-								Tick
-							</Cell>
-							<Cell as='th' isRightAligned title='Current / Max'>
-								Players
-							</Cell>
+							<Tooltip>
+								<TooltipTrigger asChild>
+									<Cell as='th' isRightAligned>
+										Tick
+									</Cell>
+								</TooltipTrigger>
+								<TooltipContent>Tickrate</TooltipContent>
+							</Tooltip>
+							<Tooltip>
+								<TooltipTrigger asChild>
+									<Cell as='th' isRightAligned>
+										Players
+									</Cell>
+								</TooltipTrigger>
+								<TooltipContent>Current / Max</TooltipContent>
+							</Tooltip>
 							<Cell as='th' isRightAligned>
 								Ping
 							</Cell>

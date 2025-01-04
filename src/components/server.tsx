@@ -7,6 +7,7 @@ import { Loader } from '@/components/loader'
 import { Players } from '@/components/players'
 import { PlayersCount } from '@/components/playersCount'
 import { Row } from '@/components/row'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
 import { Warn } from '@/components/warn'
 import { useGetServer } from '@/hooks/useServers'
 import {
@@ -41,7 +42,12 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 	const connect = `steam://connect/${address}`
 	const copyIcon = isCopied ? <CopyCheck /> : <Copy />
 	const status = isRefetching ? (
-		<Loader isAccent title='Refreshing' />
+		<Tooltip placement='right'>
+			<TooltipTrigger asChild>
+				<Loader isAccent />
+			</TooltipTrigger>
+			<TooltipContent>Refreshing</TooltipContent>
+		</Tooltip>
 	) : (
 		<ShieldCheck />
 	)
@@ -88,31 +94,46 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 			<Row isHighlighted>
 				<Cell className='text-nowrap'>{name}</Cell>
 				<Cell className='flex gap-4'>
-					<a href={connect} title={CONNECT_TITLE} className='font-mono'>
-						{address}
-					</a>
-					<Button
-						variant='icon'
-						onClick={copy}
-						title='Copy server address to clipboard'
-					>
-						{copyIcon}
-					</Button>
-					<Button variant='icon' as='a' href={connect} title={CONNECT_TITLE}>
-						<Gamepad2 />
-					</Button>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<a href={connect} className='font-mono'>
+								{address}
+							</a>
+						</TooltipTrigger>
+						<TooltipContent>{CONNECT_TITLE}</TooltipContent>
+					</Tooltip>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Button variant='icon' onClick={copy}>
+								{copyIcon}
+							</Button>
+						</TooltipTrigger>
+						<TooltipContent>Copy server address to clipboard</TooltipContent>
+					</Tooltip>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Button variant='icon' as='a' href={connect}>
+								<Gamepad2 />
+							</Button>
+						</TooltipTrigger>
+						<TooltipContent>{CONNECT_TITLE}</TooltipContent>
+					</Tooltip>
 				</Cell>
 				<Cell isRightAligned>30</Cell>
 				<Cell isRightAligned className='flex gap-4'>
 					<PlayersCount numplayers={numplayers} maxplayers={maxplayers} />
-					<Button
-						variant='icon'
-						onClick={toggleIsPlayersShown}
-						title={playersTitle}
-						disabled={hasNotPlayers}
-					>
-						{playersIcon}
-					</Button>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<Button
+								variant='icon'
+								onClick={toggleIsPlayersShown}
+								disabled={hasNotPlayers}
+							>
+								{playersIcon}
+							</Button>
+						</TooltipTrigger>
+						<TooltipContent>{playersTitle}</TooltipContent>
+					</Tooltip>
 				</Cell>
 				<Cell isRightAligned>{ping}</Cell>
 				<Cell>{map}</Cell>
