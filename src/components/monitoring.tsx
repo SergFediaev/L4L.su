@@ -58,7 +58,9 @@ export const Monitoring = () => {
 			<div className='flex flex-wrap justify-between gap-2 p-2 sm:p-4'>
 				<Tooltip>
 					<TooltipTrigger asChild>
-						<Heading as='h2'>{t('onlineServersMonitoring')}</Heading>
+						<Heading as='h2' className='text-left'>
+							{t('onlineServersMonitoring')}
+						</Heading>
 						<TooltipContent>{t('autoRefresh')}</TooltipContent>
 					</TooltipTrigger>
 				</Tooltip>
