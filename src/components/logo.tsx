@@ -2,6 +2,7 @@ import { Heading } from '@/components/heading'
 import { combine } from '@/utils/combine'
 import { filterValues } from '@/utils/filterValues'
 import { getRandomIndex } from '@/utils/getRandomIndex'
+import { useTranslations } from 'next-intl'
 import { Saira_Stencil_One } from 'next/font/google'
 import Image from 'next/image'
 import { useState } from 'react'
@@ -23,6 +24,7 @@ const ROTATES = [
 export const Logo = () => {
 	const [isLighted, setIsLighted] = useState(false)
 	const [rotate, setRotate] = useState<(typeof ROTATES)[number]>()
+	const t = useTranslations('HomePage')
 
 	const toggleIsLighted = () => {
 		setIsLighted(!isLighted)
@@ -48,11 +50,11 @@ export const Logo = () => {
 				)}
 				onClick={toggleIsLighted}
 			>
-				Left 4 Legend
+				{t('left4Legend')}
 			</Heading>
 			<Image
 				src='/logo.svg'
-				alt='Logo'
+				alt={t('logo')}
 				width={400}
 				height={525}
 				className={combine(

@@ -161,7 +161,7 @@ export const TooltipContent = React.forwardRef<
 					...style,
 				}}
 				{...context.getFloatingProps(props)}
-				className='rounded bg-neutral-100 px-2 text-background'
+				className='z-10 rounded bg-neutral-100 px-2 text-background'
 			/>
 		</FloatingPortal>
 	)

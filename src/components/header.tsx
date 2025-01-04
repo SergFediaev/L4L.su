@@ -1,11 +1,17 @@
+'use client'
+
 import { List } from '@/components/list'
+import { LocaleButton } from '@/components/localeButton'
 import { combine } from '@/utils/combine'
+import { useTranslations } from 'next-intl'
 import type { ComponentPropsWithoutRef } from 'react'
 
 export const Header = ({
 	className,
 	...restProps
 }: ComponentPropsWithoutRef<'header'>) => {
+	const t = useTranslations('HomePage')
+
 	return (
 		<header
 			className={combine(
@@ -16,28 +22,35 @@ export const Header = ({
 		>
 			<List isColumn={false} className='container mx-auto justify-evenly'>
 				<li>
-					<a href='/#Servers'>Servers</a>
+					<a href='/#Servers'>{t('servers')}</a>
 				</li>
 				<li>
 					<a href='https://steamcommunity.com/groups/Left4Legend/announcements'>
-						News
+						{t('news')}
 					</a>
 				</li>
 				<li>
-					<a href='https://steamcommunity.com/groups/Left4Legend'>Group</a>
+					<a href='https://steamcommunity.com/groups/Left4Legend'>
+						{t('group')}
+					</a>
 				</li>
 				<li>
-					<a href='https://steamcommunity.com/chat/invite/HWJHvO7g'>Chat</a>
+					<a href='https://steamcommunity.com/chat/invite/HWJHvO7g'>
+						{t('chat')}
+					</a>
 				</li>
 				<li>
 					<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3384448522'>
-						Guide
+						{t('guide')}
 					</a>
 				</li>
 				<li>
 					<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3388609126'>
-						Maps
+						{t('maps')}
 					</a>
+				</li>
+				<li>
+					<LocaleButton />
 				</li>
 			</List>
 		</header>

@@ -18,9 +18,8 @@ import {
 	Gamepad2,
 	ShieldCheck,
 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
-
-const CONNECT_TITLE = 'Connect to server'
 
 type Props = {
 	serverParams: ServerParams
@@ -30,6 +29,7 @@ type Props = {
 export const Server = ({ serverParams, ...restProps }: Props) => {
 	const [isPlayersShown, setIsPlayersShown] = useState(restProps.isPlayersShown)
 	const [isCopied, setIsCopied] = useState(false)
+	const t = useTranslations('HomePage')
 	const { data, isPending, isRefetching, isError, error } =
 		useGetServer(serverParams)
 
@@ -40,13 +40,14 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 	const { host, port } = serverParams
 	const address = `${host}:${port}`
 	const connect = `steam://connect/${address}`
+	const connectTitle = t('connectToServer')
 	const copyIcon = isCopied ? <CopyCheck /> : <Copy />
 	const status = isRefetching ? (
 		<Tooltip placement='right'>
 			<TooltipTrigger asChild>
 				<Loader isAccent />
 			</TooltipTrigger>
-			<TooltipContent>Refreshing</TooltipContent>
+			<TooltipContent>{t('refreshing')}</TooltipContent>
 		</Tooltip>
 	) : (
 		<ShieldCheck />
@@ -70,7 +71,8 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 		return (
 			<Warn>
 				<Loader>
-					Loading server&nbsp;<span className='font-mono'>{address}</span>&nbsp;
+					{t('loadingServer')}&nbsp;<span className='font-mono'>{address}</span>
+					&nbsp;
 				</Loader>
 			</Warn>
 		)
@@ -85,9 +87,7 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 	const playersIcon = isPlayersShown ? <EyeOff /> : <Eye />
 	const playersTitle = hasNotPlayers
 		? undefined
-		: isPlayersShown
-			? 'Hide players'
-			: 'Show players'
+		: t(isPlayersShown ? 'hidePlayers' : 'showPlayers')
 
 	return (
 		<>
@@ -100,7 +100,7 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 								{address}
 							</a>
 						</TooltipTrigger>
-						<TooltipContent>{CONNECT_TITLE}</TooltipContent>
+						<TooltipContent>{connectTitle}</TooltipContent>
 					</Tooltip>
 					<Tooltip>
 						<TooltipTrigger asChild>
@@ -108,7 +108,7 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 								{copyIcon}
 							</Button>
 						</TooltipTrigger>
-						<TooltipContent>Copy server address to clipboard</TooltipContent>
+						<TooltipContent>{t('copyServerAddress')}</TooltipContent>
 					</Tooltip>
 					<Tooltip>
 						<TooltipTrigger asChild>
@@ -116,7 +116,7 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 								<Gamepad2 />
 							</Button>
 						</TooltipTrigger>
-						<TooltipContent>{CONNECT_TITLE}</TooltipContent>
+						<TooltipContent>{connectTitle}</TooltipContent>
 					</Tooltip>
 				</Cell>
 				<Cell isRightAligned>30</Cell>

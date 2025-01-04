@@ -1,11 +1,14 @@
 import { List } from '@/components/list'
 import { combine } from '@/utils/combine'
+import { useTranslations } from 'next-intl'
 import type { ComponentPropsWithoutRef } from 'react'
 
 export const Footer = ({
 	className,
 	...restProps
 }: ComponentPropsWithoutRef<'footer'>) => {
+	const t = useTranslations('HomePage')
+
 	return (
 		<footer
 			className={combine(
@@ -17,56 +20,57 @@ export const Footer = ({
 			<div className='container mx-auto flex flex-wrap gap-x-10 gap-y-4 sm:justify-around'>
 				<List>
 					<li>
-						<a href='/#Servers'>Monitoring servers</a>
+						<a href='/#Servers'>{t('monitoringServers')}</a>
 					</li>
 					<li>
 						<a href='https://steamcommunity.com/groups/Left4Legend/discussions/0/601891362926791888'>
-							Support by donation
+							{t('supportByDonation')}
 						</a>
 					</li>
 					<li>
 						<a href='https://steamcommunity.com/groups/Left4Legend/discussions/0/601891362926791278'>
-							Report a servers problem
+							{t('reportServersProblem')}
 						</a>
 					</li>
 					<li>
 						<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3384448522'>
-							Complete servers guide
+							{t('completeServersGuide')}
 						</a>
 					</li>
 				</List>
 				<List className='sm:text-center'>
 					<li>
-						© 2022–{new Date().getFullYear()} <a href='https://Sefo.su'>Sefo</a>
+						© 2022–{new Date().getFullYear()}{' '}
+						<a href='https://Sefo.su'>{t('copyright')}</a>
 					</li>
 					<li>
-						<q>Legends never die!</q>
+						<q>{t('slogan')}</q>
 					</li>
 					<li>
 						<a href='https://github.com/SefoNotasi/Left4LegendServer'>
-							GitHub servers repository
+							{t('githubServersRepository')}
 						</a>
 					</li>
 				</List>
 				<List>
 					<li>
 						<a href='https://steamcommunity.com/groups/Left4Legend'>
-							Steam community group
+							{t('steamCommunityGroup')}
 						</a>
 					</li>
 					<li>
 						<a href='https://steamcommunity.com/chat/invite/HWJHvO7g'>
-							Steam community chat
+							{t('steamCommunityChat')}
 						</a>
 					</li>
 					<li>
 						<a href='https://steamcommunity.com/groups/Left4Legend/announcements'>
-							Community announcements
+							{t('communityAnnouncements')}
 						</a>
 					</li>
 					<li>
 						<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3388609126'>
-							Servers maps collection
+							{t('serversMapsCollection')}
 						</a>
 					</li>
 				</List>

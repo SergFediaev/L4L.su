@@ -3,12 +3,15 @@ import { Cell } from '@/components/cell'
 import { Heading } from '@/components/heading'
 import { Played } from '@/components/played'
 import { Row } from '@/components/row'
+import { useTranslations } from 'next-intl'
 
 type Props = {
 	players: Player[]
 }
 
 export const Players = (props: Props) => {
+	const t = useTranslations('HomePage')
+
 	if (!props.players.length) {
 		return null
 	}
@@ -30,18 +33,18 @@ export const Players = (props: Props) => {
 					<thead>
 						<Row>
 							<Cell colSpan={3} align='right'>
-								<Heading as='h4'>Players</Heading>
+								<Heading as='h4'>{t('players')}</Heading>
 							</Cell>
 						</Row>
 					</thead>
 					<thead>
 						<Row>
-							<Cell as='th'>Nickname</Cell>
+							<Cell as='th'>{t('nickname')}</Cell>
 							<Cell as='th' isRightAligned>
-								Played
+								{t('played')}
 							</Cell>
 							<Cell as='th' isRightAligned>
-								Score
+								{t('score')}
 							</Cell>
 						</Row>
 					</thead>

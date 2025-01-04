@@ -7,12 +7,15 @@ import { Logo } from '@/components/logo'
 import { Monitoring } from '@/components/monitoring'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
 import { Video } from '@/components/video'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import type { ComponentPropsWithoutRef } from 'react'
 
 const SERVERS = '/#Servers'
 
 export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
+	const t = useTranslations('HomePage')
+
 	return (
 		<main id='Servers' {...props}>
 			<div className='flex min-h-svh flex-col items-center justify-center gap-10 bg-background px-8 py-20 shadow-black shadow-inner'>
@@ -25,7 +28,7 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 				<Carousel />
 				<aside className='sticky bottom-0 z-10 flex justify-end p-8'>
 					<Button as='a' href={SERVERS} variant='lead'>
-						Play now
+						{t('playNow')}
 					</Button>
 				</aside>
 			</div>
@@ -35,12 +38,17 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 						href={SERVERS}
 						className='font-black text-4xl underline-offset-8 sm:text-8xl'
 					>
-						Now playing!
+						{t('nowPlaying')}
 					</a>
 					<Tooltip placement='bottom'>
 						<TooltipTrigger asChild>
-							<Image src='/code.svg' width={400} height={400} alt='QR code' />
-							<TooltipContent>Don't scan!</TooltipContent>
+							<Image
+								src='/code.svg'
+								width={400}
+								height={400}
+								alt={t('qrCode')}
+							/>
+							<TooltipContent>{t('dontScan')}</TooltipContent>
 						</TooltipTrigger>
 					</Tooltip>
 				</aside>
@@ -48,15 +56,13 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 					<TooltipTrigger asChild>
 						<Image
 							src='/levi.png'
-							alt='Levi Ackerman'
+							alt={t('artAlt')}
 							width={393}
 							height={1144}
 							className='translate-y-10'
 						/>
 					</TooltipTrigger>
-					<TooltipContent>
-						Not anime fan, but they say projects work better with it :D
-					</TooltipContent>
+					<TooltipContent>{t('artTitle')}</TooltipContent>
 				</Tooltip>
 			</section>
 		</main>

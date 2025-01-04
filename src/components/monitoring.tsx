@@ -5,6 +5,7 @@ import { Heading } from '@/components/heading'
 import { Row } from '@/components/row'
 import { Server } from '@/components/server'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 const SERVERS: ServerParams[] = [
@@ -36,6 +37,7 @@ const SERVERS: ServerParams[] = [
 
 export const Monitoring = () => {
 	const [isPlayersShown, setIsPlayersShown] = useState(true)
+	const t = useTranslations('HomePage')
 
 	const servers = SERVERS.map((server, index) => (
 		<Server
@@ -45,9 +47,9 @@ export const Monitoring = () => {
 		/>
 	))
 
-	const playersText = isPlayersShown
-		? 'Always hide players'
-		: 'Always show players'
+	const playersText = t(
+		isPlayersShown ? 'alwaysHidePlayers' : 'alwaysShowPlayers',
+	)
 
 	const toggleIsPlayersShown = () => setIsPlayersShown(!isPlayersShown)
 
@@ -56,8 +58,8 @@ export const Monitoring = () => {
 			<div className='flex flex-wrap justify-between gap-2 p-2 sm:p-4'>
 				<Tooltip>
 					<TooltipTrigger asChild>
-						<Heading as='h2'>Online servers monitoring</Heading>
-						<TooltipContent>Auto refresh every 30 seconds</TooltipContent>
+						<Heading as='h2'>{t('onlineServersMonitoring')}</Heading>
+						<TooltipContent>{t('autoRefresh')}</TooltipContent>
 					</TooltipTrigger>
 				</Tooltip>
 				<Button onClick={toggleIsPlayersShown}>{playersText}</Button>
@@ -66,30 +68,30 @@ export const Monitoring = () => {
 				<table className='text-left'>
 					<thead className='align-top'>
 						<Row>
-							<Cell as='th'>Server name</Cell>
-							<Cell as='th'>IP address : port</Cell>
+							<Cell as='th'>{t('serverName')}</Cell>
+							<Cell as='th'>{t('ipPort')}</Cell>
 							<Tooltip>
 								<TooltipTrigger asChild>
 									<Cell as='th' isRightAligned>
-										Tick
+										{t('tick')}
 									</Cell>
 								</TooltipTrigger>
-								<TooltipContent>Tickrate</TooltipContent>
+								<TooltipContent>{t('tickrate')}</TooltipContent>
 							</Tooltip>
 							<Tooltip>
 								<TooltipTrigger asChild>
 									<Cell as='th' isRightAligned>
-										Players
+										{t('players')}
 									</Cell>
 								</TooltipTrigger>
-								<TooltipContent>Current / Max</TooltipContent>
+								<TooltipContent>{t('currentMax')}</TooltipContent>
 							</Tooltip>
 							<Cell as='th' isRightAligned>
-								Ping
+								{t('ping')}
 							</Cell>
-							<Cell as='th'>Map</Cell>
+							<Cell as='th'>{t('map')}</Cell>
 							<Cell as='th' isRightAligned>
-								Status
+								{t('status')}
 							</Cell>
 						</Row>
 					</thead>
