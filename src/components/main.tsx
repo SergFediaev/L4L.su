@@ -42,12 +42,7 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 					</a>
 					<Tooltip placement='bottom'>
 						<TooltipTrigger asChild>
-							<Image
-								src='/code.svg'
-								width={400}
-								height={400}
-								alt={t('qrCode')}
-							/>
+							<Image src='/qr.svg' width={350} height={350} alt={t('qrCode')} />
 							<TooltipContent>{t('dontScan')}</TooltipContent>
 						</TooltipTrigger>
 					</Tooltip>

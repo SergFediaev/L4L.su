@@ -7,22 +7,24 @@ import { Slide } from '@/components/slide'
 import { combine } from '@/utils/combine'
 import { useTranslations } from 'next-intl'
 import type { ComponentPropsWithoutRef } from 'react'
+import { useLocale } from 'use-intl'
+
+const plugins = [
+	new AutoPlay({ duration: 5_000, stopOnHover: true }),
+	new Pagination({ type: 'fraction' }),
+	new Arrow(),
+]
 
 export const Carousel = ({
 	className,
 	...restProps
 }: ComponentPropsWithoutRef<'div'>) => {
+	const locale = useLocale()
 	const t = useTranslations('HomePage')
-
-	const plugins = [
-		new AutoPlay({ duration: 5_000, stopOnHover: true }),
-		new Pagination({ type: 'fraction' }),
-		new Arrow(),
-	]
 
 	return (
 		<div className={combine('container mx-auto', className)} {...restProps}>
-			<Flicking circular={true} plugins={plugins}>
+			<Flicking circular={true} plugins={plugins} key={locale}>
 				<Slide
 					heading={t('slide1Heading')}
 					text={t('slide1Text')}
@@ -39,7 +41,6 @@ export const Carousel = ({
 					heading={t('slide3Heading')}
 					text={t('slide3Text')}
 					review={t('slide3Review')}
-					source={t('slide3Source')}
 				/>
 				<Slide
 					heading={t('slide4Heading')}
