@@ -1,30 +1,39 @@
-import { Arrow, AutoPlay, Pagination } from '@egjs/flicking-plugins'
+import {
+	Arrow,
+	AutoPlay,
+	Fade,
+	Pagination,
+	Perspective,
+} from '@egjs/flicking-plugins'
 import Flicking, { ViewportSlot } from '@egjs/react-flicking'
 import '@egjs/react-flicking/dist/flicking.css'
-import '@egjs/flicking-plugins/dist/arrow.css'
-import '@egjs/flicking-plugins/dist/pagination.css'
+import { Button } from '@/components/button'
 import { Slide } from '@/components/slide'
-import { combine } from '@/utils/combine'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import type { ComponentPropsWithoutRef } from 'react'
 import { useLocale } from 'use-intl'
 
 const plugins = [
 	new AutoPlay({ duration: 5_000, stopOnHover: true }),
-	new Pagination({ type: 'fraction' }),
-	new Arrow(),
+	new Fade('', 2),
+	new Perspective({ rotate: -1, scale: 2, perspective: 600 }),
+	new Arrow({ prevElSelector: '.prev', nextElSelector: '.next' }),
+	new Pagination({
+		type: 'fraction',
+		selector: '.pagination',
+		renderFraction: (currentClass, totalClass) =>
+			`<span class='${currentClass}'></span> / <span class='${totalClass}'></span>`,
+	}),
 ]
 
-export const Carousel = ({
-	className,
-	...restProps
-}: ComponentPropsWithoutRef<'div'>) => {
+export const Carousel = (props: ComponentPropsWithoutRef<'div'>) => {
 	const locale = useLocale()
 	const t = useTranslations('HomePage')
 
 	return (
-		<div className={combine('container mx-auto', className)} {...restProps}>
-			<Flicking circular={true} plugins={plugins} key={locale}>
+		<div {...props}>
+			<Flicking circular={true} plugins={plugins} key={locale} duration={1_000}>
 				<Slide
 					heading={t('slide1Heading')}
 					text={t('slide1Text')}
@@ -66,9 +75,19 @@ export const Carousel = ({
 					review={t('slide7Review')}
 				/>
 				<ViewportSlot>
-					<span className='flicking-arrow-prev' />
-					<span className='flicking-arrow-next' />
-					<div className='flicking-pagination' />
+					<nav className='absolute bottom-0 z-10 flex w-full items-center justify-center gap-5 sm:gap-10'>
+						<span className='prev'>
+							<Button variant='icon'>
+								<ChevronLeft size={48} strokeWidth={3} />
+							</Button>
+						</span>
+						<div className='pagination font-mono' />
+						<span className='next'>
+							<Button variant='icon'>
+								<ChevronRight size={48} strokeWidth={3} />
+							</Button>
+						</span>
+					</nav>
 				</ViewportSlot>
 			</Flicking>
 		</div>

@@ -50,6 +50,11 @@ export const Header = ({
 					</a>
 				</li>
 				<li>
+					<a href='https://steamcommunity.com/groups/Left4Legend/discussions/0/601891362926791888'>
+						{t('donate')}
+					</a>
+				</li>
+				<li>
 					<LocaleButton />
 				</li>
 			</List>
