@@ -9,6 +9,7 @@ import Flicking, { ViewportSlot } from '@egjs/react-flicking'
 import '@egjs/react-flicking/dist/flicking.css'
 import { Button } from '@/components/button'
 import { Slide } from '@/components/slide'
+import { combine } from '@/utils/combine'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import type { ComponentPropsWithoutRef } from 'react'
@@ -27,12 +28,18 @@ const plugins = [
 	}),
 ]
 
-export const Carousel = (props: ComponentPropsWithoutRef<'div'>) => {
+export const Carousel = ({
+	className,
+	...restProps
+}: ComponentPropsWithoutRef<'div'>) => {
 	const locale = useLocale()
 	const t = useTranslations('HomePage')
 
 	return (
-		<div {...props}>
+		<div
+			className={combine('flex min-h-svh flex-col justify-center', className)}
+			{...restProps}
+		>
 			<Flicking circular={true} plugins={plugins} key={locale} duration={1_000}>
 				<Slide
 					heading={t('slide1Heading')}
@@ -75,19 +82,21 @@ export const Carousel = (props: ComponentPropsWithoutRef<'div'>) => {
 					review={t('slide7Review')}
 				/>
 				<ViewportSlot>
-					<nav className='absolute right-8 bottom-8 left-8 z-20 mx-auto flex w-fit flex-wrap items-center justify-center gap-2 rounded-full bg-background p-2 shadow-black shadow-lg'>
-						<span className='prev'>
-							<Button variant='icon'>
-								<ChevronLeft size={48} strokeWidth={3} />
-							</Button>
-						</span>
-						<div className='pagination font-mono' />
-						<span className='next'>
-							<Button variant='icon'>
-								<ChevronRight size={48} strokeWidth={3} />
-							</Button>
-						</span>
-					</nav>
+					<div className='flex justify-center p-8'>
+						<nav className='flex flex-wrap items-center justify-center gap-2 rounded-full bg-background p-2'>
+							<span className='prev'>
+								<Button variant='icon'>
+									<ChevronLeft size={48} strokeWidth={3} />
+								</Button>
+							</span>
+							<div className='pagination font-mono' />
+							<span className='next'>
+								<Button variant='icon'>
+									<ChevronRight size={48} strokeWidth={3} />
+								</Button>
+							</span>
+						</nav>
+					</div>
 				</ViewportSlot>
 			</Flicking>
 		</div>

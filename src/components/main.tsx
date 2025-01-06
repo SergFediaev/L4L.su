@@ -26,7 +26,7 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 			<Video />
 			<div className='bg-black'>
 				<Carousel />
-				<aside className='sticky bottom-0 z-10 flex justify-end p-8'>
+				<aside className='sticky bottom-0 z-10 hidden justify-end p-8 sm:flex'>
 					<Button as='a' href={SERVERS} variant='lead'>
 						{t('playNow')}
 					</Button>

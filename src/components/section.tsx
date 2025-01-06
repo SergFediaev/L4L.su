@@ -9,7 +9,7 @@ export const Section = ({
 	return (
 		<section
 			className={combine(
-				'flex min-h-svh w-full items-center justify-center',
+				'flex w-full cursor-grab items-end justify-center',
 				className,
 			)}
 			{...restProps}
