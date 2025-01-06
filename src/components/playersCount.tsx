@@ -10,7 +10,9 @@ export const PlayersCount = ({ numplayers, maxplayers }: Props) => {
 
 	return (
 		<span className='text-nowrap'>
-			<span className={combine(hasPlayers && 'text-accent')}>{numplayers}</span>{' '}
+			<span className={combine(hasPlayers && 'text-variant')}>
+				{numplayers}
+			</span>{' '}
 			/ {maxplayers}
 		</span>
 	)

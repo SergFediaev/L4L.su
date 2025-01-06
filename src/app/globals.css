@@ -35,7 +35,7 @@ body {
 
 	q:before,
 	q:after {
-		@apply text-accent;
+		@apply text-variant;
 	}
 
 	::selection {

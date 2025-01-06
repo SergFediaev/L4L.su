@@ -23,15 +23,17 @@
 		"next-intl": "^3.26.3",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
+		"steamcommunity": "^3.48.5",
 		"tailwind-merge": "^2.6.0"
 	},
 	"devDependencies": {
-		"@tanstack/react-query-devtools": "^5.62.11",
 		"@biomejs/biome": "1.9.4",
+		"@tanstack/react-query-devtools": "^5.62.11",
 		"@types/gamedig": "^5.0.3",
 		"@types/node": "^20",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
+		"@types/steamcommunity": "^3.43.7",
 		"postcss": "^8",
 		"tailwindcss": "^3.4.1",
 		"typescript": "^5"

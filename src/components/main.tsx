@@ -3,6 +3,7 @@
 import { Button } from '@/components/button'
 import { Campaigns } from '@/components/campaigns'
 import { Carousel } from '@/components/carousel'
+import { Group } from '@/components/group'
 import { Logo } from '@/components/logo'
 import { Monitoring } from '@/components/monitoring'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
@@ -23,7 +24,7 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 				<Monitoring />
 			</div>
 			<Campaigns />
-			<Video />
+			<Group />
 			<div className='snap-center bg-black'>
 				<Carousel />
 				<aside className='sticky bottom-0 z-10 hidden justify-end p-8 sm:flex'>
@@ -32,6 +33,7 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 					</Button>
 				</aside>
 			</div>
+			<Video />
 			<section className='flex snap-center flex-wrap justify-center gap-10 overflow-hidden bg-background px-8 pt-20'>
 				<aside className='flex flex-col items-center justify-center gap-10'>
 					<a

@@ -9,7 +9,7 @@ export const Played = ({ time }: Props) => {
 	const seconds = String(secs % 60).padStart(2, '0')
 
 	return hours > 0 ? (
-		<span className='text-accent'>
+		<span className='text-variant'>
 			{hours}:{String(minutes).padStart(2, '0')}:{seconds}
 		</span>
 	) : (
