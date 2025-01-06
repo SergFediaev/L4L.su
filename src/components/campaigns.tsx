@@ -1,15 +1,21 @@
 import { Button } from '@/components/button'
 import { Heading } from '@/components/heading'
+import { Poster } from '@/components/poster'
 import { filterValues } from '@/utils/filterValues'
 import { getRandomIndex } from '@/utils/getRandomIndex'
+import { AutoPlay } from '@egjs/flicking-plugins'
+import Flicking from '@egjs/react-flicking'
+import { CircleX } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useLocale } from 'use-intl'
 
 type Campaign = {
 	name: string
 	poster: string
 }
+
+const plugins = [new AutoPlay({ duration: 0 })]
 
 export const Campaigns = () => {
 	const t = useTranslations('HomePage')
@@ -79,6 +85,24 @@ export const Campaigns = () => {
 
 	const [campaign, setCampaign] = useState<(typeof CAMPAIGNS)[number]>()
 	const [isRandomizing, setIsRandomizing] = useState(false)
+	const locale = useLocale()
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: Translate campaign name
+	useEffect(() => {
+		if (!campaign) {
+			return
+		}
+
+		const currentCampaign = CAMPAIGNS.find(
+			({ poster }) => poster === campaign.poster,
+		)
+
+		if (!currentCampaign) {
+			return
+		}
+
+		setCampaign(currentCampaign)
+	}, [locale])
 
 	const randomCampaignText = t(
 		isRandomizing ? 'randomizingCampaign' : 'randomCampaign',
@@ -100,9 +124,13 @@ export const Campaigns = () => {
 		}, 2_000)
 	}
 
+	const resetCampaign = () => {
+		setCampaign(undefined)
+	}
+
 	return (
-		<>
-			<div className='flex flex-col items-start gap-5 sm:items-center'>
+		<div className='flex min-h-svh flex-col justify-center bg-black py-8'>
+			<div className='flex flex-col items-center gap-5 px-8'>
 				<Heading as='h4'>{t('campaignToPlay')}</Heading>
 				<Button
 					variant='lead'
@@ -112,18 +140,34 @@ export const Campaigns = () => {
 					{randomCampaignText}
 				</Button>
 			</div>
-			{campaign && (
-				<div className='flex flex-col items-center gap-5'>
-					<p className='animate-pulse'>{campaign.name}</p>
-					<Image
-						src={campaign.poster}
-						alt={campaign.name}
-						width={1_024}
-						height={1_024}
-						className='w-full max-w-2xl'
-					/>
+			{campaign ? (
+				<div className='relative flex flex-col items-center'>
+					<Poster src={campaign.poster} alt={campaign.name} />
+					<p className='absolute bottom-0 flex flex-wrap justify-center gap-4 px-8'>
+						<span className='animate-pulse'>{campaign.name}</span>
+						<Button variant='icon' onClick={resetCampaign}>
+							<CircleX />
+						</Button>
+					</p>
 				</div>
+			) : (
+				<Flicking
+					circular={true}
+					plugins={plugins}
+					align='prev'
+					easing={x => x}
+					duration={10_000}
+					disableOnInit
+				>
+					{CAMPAIGNS.slice(1).map(campaign => (
+						<Poster
+							key={campaign.name}
+							src={campaign.poster}
+							alt={campaign.name}
+						/>
+					))}
+				</Flicking>
 			)}
-		</>
+		</div>
 	)
 }

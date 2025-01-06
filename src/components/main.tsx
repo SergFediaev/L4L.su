@@ -21,8 +21,8 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 			<div className='flex min-h-svh flex-col items-center justify-center gap-10 bg-background px-8 py-20 shadow-black shadow-inner'>
 				<Logo />
 				<Monitoring />
-				<Campaigns />
 			</div>
+			<Campaigns />
 			<Video />
 			<div className='bg-black'>
 				<Carousel />
