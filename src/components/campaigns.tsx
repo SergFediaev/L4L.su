@@ -1,6 +1,7 @@
 import { Button } from '@/components/button'
 import { Heading } from '@/components/heading'
 import { Poster } from '@/components/poster'
+import { combine } from '@/utils/combine'
 import { filterValues } from '@/utils/filterValues'
 import { getRandomIndex } from '@/utils/getRandomIndex'
 import { AutoPlay } from '@egjs/flicking-plugins'
@@ -111,10 +112,6 @@ export const Campaigns = () => {
 	const randomCampaign = () => {
 		setIsRandomizing(true)
 
-		if (campaign) {
-			setCampaign(undefined)
-		}
-
 		setTimeout(() => {
 			const campaigns = filterValues(CAMPAIGNS, campaign)
 			const randomIndex = getRandomIndex(campaigns)
@@ -130,7 +127,7 @@ export const Campaigns = () => {
 
 	return (
 		<div className='flex min-h-svh flex-col justify-center bg-black py-8'>
-			<div className='flex flex-col items-center gap-5 px-8'>
+			<div className='flex flex-col items-start gap-5 px-8 sm:items-center'>
 				<Heading as='h4'>{t('campaignToPlay')}</Heading>
 				<Button
 					variant='lead'
@@ -141,7 +138,12 @@ export const Campaigns = () => {
 				</Button>
 			</div>
 			{campaign ? (
-				<div className='relative flex flex-col items-center'>
+				<div
+					className={combine(
+						'relative flex flex-col items-center transition duration-1000',
+						isRandomizing && 'opacity-0',
+					)}
+				>
 					<Poster src={campaign.poster} alt={campaign.name} />
 					<p className='absolute bottom-0 flex flex-wrap justify-center gap-4 px-8'>
 						<span className='animate-pulse'>{campaign.name}</span>
@@ -151,22 +153,29 @@ export const Campaigns = () => {
 					</p>
 				</div>
 			) : (
-				<Flicking
-					circular={true}
-					plugins={plugins}
-					align='prev'
-					easing={x => x}
-					duration={10_000}
-					disableOnInit
+				<div
+					className={combine(
+						'transition duration-1000',
+						isRandomizing && 'opacity-0',
+					)}
 				>
-					{CAMPAIGNS.slice(1).map(campaign => (
-						<Poster
-							key={campaign.name}
-							src={campaign.poster}
-							alt={campaign.name}
-						/>
-					))}
-				</Flicking>
+					<Flicking
+						circular={true}
+						plugins={plugins}
+						align='prev'
+						easing={x => x}
+						duration={10_000}
+						disableOnInit
+					>
+						{CAMPAIGNS.slice(1).map(campaign => (
+							<Poster
+								key={campaign.name}
+								src={campaign.poster}
+								alt={campaign.name}
+							/>
+						))}
+					</Flicking>
+				</div>
 			)}
 		</div>
 	)

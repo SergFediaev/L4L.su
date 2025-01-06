@@ -29,7 +29,7 @@ export const Button = <T extends ElementType = typeof DEFAULT_TYPE>({
 				variant === 'primary' &&
 					'bg-accent px-2 text-black hover:bg-variant sm:px-4',
 				variant === 'lead' &&
-					'hover:glow bg-accent px-4 py-2 text-black shadow-black shadow-lg hover:bg-variant hover:shadow-none',
+					'hover:glow z-10 bg-accent px-4 py-2 text-black shadow-black shadow-lg hover:bg-variant hover:shadow-none',
 				variant === 'icon' && 'text-accent hover:text-variant',
 				isLoading && 'cursor-progress',
 				disabled && 'opacity-50 hover:text-accent',
