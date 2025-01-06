@@ -75,7 +75,7 @@ export const Carousel = (props: ComponentPropsWithoutRef<'div'>) => {
 					review={t('slide7Review')}
 				/>
 				<ViewportSlot>
-					<nav className='absolute bottom-0 z-10 flex w-full items-center justify-center gap-5 sm:gap-10'>
+					<nav className='absolute right-8 bottom-8 left-8 z-20 mx-auto flex w-fit flex-wrap items-center justify-center gap-2 rounded-full bg-background p-2 shadow-black shadow-lg'>
 						<span className='prev'>
 							<Button variant='icon'>
 								<ChevronLeft size={48} strokeWidth={3} />
