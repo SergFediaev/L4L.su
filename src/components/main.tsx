@@ -18,13 +18,13 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 
 	return (
 		<main id='Servers' {...props}>
-			<div className='flex min-h-svh flex-col items-center justify-center gap-10 bg-background px-8 py-20 shadow-black shadow-inner'>
+			<div className='flex min-h-svh snap-center flex-col items-center justify-center gap-10 bg-background px-8 py-20 shadow-black shadow-inner'>
 				<Logo />
 				<Monitoring />
 			</div>
 			<Campaigns />
 			<Video />
-			<div className='bg-black'>
+			<div className='snap-center bg-black'>
 				<Carousel />
 				<aside className='sticky bottom-0 z-10 hidden justify-end p-8 sm:flex'>
 					<Button as='a' href={SERVERS} variant='lead'>
@@ -32,7 +32,7 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 					</Button>
 				</aside>
 			</div>
-			<section className='flex flex-wrap justify-center gap-10 overflow-hidden bg-background px-8 pt-20'>
+			<section className='flex snap-center flex-wrap justify-center gap-10 overflow-hidden bg-background px-8 pt-20'>
 				<aside className='flex flex-col items-center justify-center gap-10'>
 					<a
 						href={SERVERS}

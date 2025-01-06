@@ -15,7 +15,7 @@ export const Header = ({
 	return (
 		<header
 			className={combine(
-				'sticky top-0 z-30 bg-black bg-opacity-80 p-4 shadow-2xl shadow-black backdrop-blur-lg',
+				'sticky top-0 z-30 snap-end bg-black bg-opacity-80 p-4 shadow-2xl shadow-black backdrop-blur-lg',
 				className,
 			)}
 			{...restProps}

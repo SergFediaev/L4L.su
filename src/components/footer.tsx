@@ -12,7 +12,7 @@ export const Footer = ({
 	return (
 		<footer
 			className={combine(
-				'bg-black p-6 text-base shadow-background shadow-inner',
+				'snap-start bg-black p-6 text-base shadow-background shadow-inner',
 				className,
 			)}
 			{...restProps}
