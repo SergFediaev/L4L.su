@@ -40,7 +40,13 @@ export const Carousel = ({
 			className={combine('flex min-h-svh flex-col justify-center', className)}
 			{...restProps}
 		>
-			<Flicking circular={true} plugins={plugins} key={locale} duration={1_000}>
+			<Flicking
+				circular={true}
+				plugins={plugins}
+				key={locale}
+				duration={1_000}
+				moveType='strict'
+			>
 				<Slide
 					heading={t('slide1Heading')}
 					text={t('slide1Text')}

@@ -2,7 +2,6 @@ import { Button } from '@/components/button'
 import { Heading } from '@/components/heading'
 import { Poster } from '@/components/poster'
 import { combine } from '@/utils/combine'
-import { filterValues } from '@/utils/filterValues'
 import { getRandomIndex } from '@/utils/getRandomIndex'
 import { AutoPlay } from '@egjs/flicking-plugins'
 import Flicking from '@egjs/react-flicking'
@@ -21,7 +20,7 @@ const plugins = [new AutoPlay({ duration: 0 })]
 export const Campaigns = () => {
 	const t = useTranslations('HomePage')
 
-	const CAMPAIGNS: Campaign[] = [
+	const CAMPAIGNS: readonly Campaign[] = [
 		{
 			name: t('customCampaign'),
 			poster: '/campaigns/custom.png',
@@ -86,6 +85,7 @@ export const Campaigns = () => {
 
 	const [campaign, setCampaign] = useState<(typeof CAMPAIGNS)[number]>()
 	const [isRandomizing, setIsRandomizing] = useState(false)
+	const [isResetting, setIsResetting] = useState(false)
 	const locale = useLocale()
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: Translate campaign name
@@ -105,6 +105,7 @@ export const Campaigns = () => {
 		setCampaign(currentCampaign)
 	}, [locale])
 
+	const OFFICIAL_CAMPAIGNS: readonly Campaign[] = CAMPAIGNS.slice(1)
 	const randomCampaignText = t(
 		isRandomizing ? 'randomizingCampaign' : 'randomCampaign',
 	)
@@ -113,7 +114,10 @@ export const Campaigns = () => {
 		setIsRandomizing(true)
 
 		setTimeout(() => {
-			const campaigns = filterValues(CAMPAIGNS, campaign)
+			const campaigns = CAMPAIGNS.filter(
+				({ poster }) => poster !== campaign?.poster,
+			)
+
 			const randomIndex = getRandomIndex(campaigns)
 
 			setCampaign(campaigns[randomIndex])
@@ -122,7 +126,12 @@ export const Campaigns = () => {
 	}
 
 	const resetCampaign = () => {
-		setCampaign(undefined)
+		setIsResetting(true)
+
+		setTimeout(() => {
+			setCampaign(undefined)
+			setIsResetting(false)
+		}, 1_000)
 	}
 
 	return (
@@ -133,6 +142,7 @@ export const Campaigns = () => {
 					variant='lead'
 					onClick={randomCampaign}
 					isLoading={isRandomizing}
+					isDisabled={isResetting}
 				>
 					{randomCampaignText}
 				</Button>
@@ -141,13 +151,17 @@ export const Campaigns = () => {
 				<div
 					className={combine(
 						'relative flex flex-col items-center transition duration-1000',
-						isRandomizing && 'opacity-0',
+						(isRandomizing || isResetting) && 'opacity-0',
 					)}
 				>
 					<Poster src={campaign.poster} alt={campaign.name} />
 					<p className='absolute bottom-0 flex flex-wrap justify-center gap-4 px-8'>
 						<span className='animate-pulse'>{campaign.name}</span>
-						<Button variant='icon' onClick={resetCampaign}>
+						<Button
+							variant='icon'
+							onClick={resetCampaign}
+							isDisabled={isResetting}
+						>
 							<CircleX />
 						</Button>
 					</p>
@@ -156,7 +170,7 @@ export const Campaigns = () => {
 				<div
 					className={combine(
 						'transition duration-1000',
-						isRandomizing && 'opacity-0',
+						(isRandomizing || isResetting) && 'opacity-0',
 					)}
 				>
 					<Flicking
@@ -166,8 +180,9 @@ export const Campaigns = () => {
 						easing={x => x}
 						duration={10_000}
 						disableOnInit
+						defaultIndex={getRandomIndex(OFFICIAL_CAMPAIGNS)}
 					>
-						{CAMPAIGNS.slice(1).map(campaign => (
+						{OFFICIAL_CAMPAIGNS.map(campaign => (
 							<Poster
 								key={campaign.name}
 								src={campaign.poster}

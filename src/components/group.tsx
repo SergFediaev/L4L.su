@@ -37,7 +37,7 @@ export const Group = () => {
 					</Stats>
 				</div>
 			</div>
-			<div className='flex grow items-end'>
+			<div className='flex grow items-end justify-center'>
 				<div className='sticky bottom-0 flex'>
 					<Image
 						src='/l4d2.webp'

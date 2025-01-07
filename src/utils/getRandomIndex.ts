@@ -1,2 +1,2 @@
-export const getRandomIndex = <T>(array: T[]) =>
+export const getRandomIndex = <T>(array: readonly T[]) =>
 	Math.floor(Math.random() * array.length)

@@ -127,7 +127,7 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 							<Button
 								variant='icon'
 								onClick={toggleIsPlayersShown}
-								disabled={hasNotPlayers}
+								isDisabled={hasNotPlayers}
 							>
 								{playersIcon}
 							</Button>
