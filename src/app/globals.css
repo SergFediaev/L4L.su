@@ -25,10 +25,6 @@ body {
 		@apply scroll-smooth;
 	}
 
-	html {
-		@apply snap-y snap-mandatory;
-	}
-
 	a {
 		@apply underline underline-offset-4 decoration-accent hover:text-accent transition;
 	}
