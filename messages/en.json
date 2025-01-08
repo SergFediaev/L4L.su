@@ -49,7 +49,8 @@
 		"bloodHarvest": "Blood Harvest",
 		"sacrifice": "The Sacrifice",
 		"lastStand": "The Last Stand",
-		"community": "Join the Left 4 Legend Community",
+		"community": "Community",
+		"communityHeading": "Join the Left 4 Legend Community",
 		"communityDescription": "Dive into the heart of Left 4 Legend and connect with players who share your passion for our enhanced Left 4 Dead 2 servers. Stay up to date with announcements and server updates through our Steam group, or hop into our text and voice channels to find teammates and plan your next run. Whether you're strategizing or just hanging out, our community is the perfect place to embrace the legendary experience.",
 		"joinGroup": "Join group",
 		"joinChat": "Join chat",
@@ -100,6 +101,13 @@
 		"steamCommunityChat": "Steam community chat",
 		"communityAnnouncements": "Community announcements",
 		"serversMapsCollection": "Servers maps collection",
-		"switchLang": "Переключить язык"
+		"switchLang": "Переключить язык",
+		"promo": "Promo",
+		"tv": "L4L TV",
+		"enableDebugMode": "Enable debug mode",
+		"disableDebugMode": "Disable debug mode",
+		"page404": "Page 404",
+		"pageError": "Page error",
+		"debugError": "Debug error #"
 	}
 }

@@ -9,6 +9,7 @@ export const Video = ({ isDarkened, className, ...restProps }: Props) => {
 	return (
 		<>
 			<video
+				id='TV'
 				src='/background.mp4'
 				muted
 				loop

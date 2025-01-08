@@ -23,11 +23,11 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 				<Logo />
 				<Monitoring />
 			</div>
-			<Campaigns />
-			<Group />
-			<div className='snap-center bg-black'>
+			<div>
+				<Campaigns />
+				<Group />
 				<Carousel />
-				<aside className='sticky bottom-0 z-10 hidden justify-end p-8 sm:flex'>
+				<aside className='invisible sticky bottom-0 z-10 w-fit py-8 pl-8 sm:visible'>
 					<Button as='a' href={SERVERS} variant='lead'>
 						{t('playNow')}
 					</Button>

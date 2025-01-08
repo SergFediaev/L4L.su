@@ -37,6 +37,7 @@ export const Carousel = ({
 
 	return (
 		<div
+			id='Promo'
 			className={combine('flex min-h-svh flex-col justify-center', className)}
 			{...restProps}
 		>
