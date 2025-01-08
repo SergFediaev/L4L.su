@@ -23,7 +23,7 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 				<Logo />
 				<Monitoring />
 			</div>
-			<div>
+			<div className='bg-black'>
 				<Campaigns />
 				<Group />
 				<Carousel />

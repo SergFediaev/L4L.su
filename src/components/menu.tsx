@@ -65,7 +65,7 @@ export const Menu = () => {
 				type='button'
 				ref={button}
 				onClick={toggleIsMenuShown}
-				className='-top-8 hover:glow relative rounded-full bg-accent p-2 text-black shadow-black shadow-lg transition hover:bg-variant hover:shadow-none'
+				className='-top-10 hover:glow relative rounded-full bg-accent p-2 text-black shadow-black shadow-lg transition hover:bg-variant hover:shadow-none'
 			>
 				{menuIcon}
 			</button>
