@@ -108,6 +108,14 @@
 		"disableDebugMode": "Disable debug mode",
 		"page404": "Page 404",
 		"pageError": "Page error",
-		"debugError": "Debug error #"
+		"debugError": "Debug error #",
+		"somethingWentWrong": "Something went wrong!",
+		"tryAgain": "Try again",
+		"reloadPage": "Reload page",
+		"errorArtAlt": "Mikasa Ackerman",
+		"404": "404",
+		"addressNotFound": "Requested address not found:",
+		"returnToHomepage": "Return to homepage",
+		"404ArtAlt": "Sasha Braus"
 	}
 }

@@ -6,7 +6,7 @@ const DEFAULT_TYPE = 'button'
 
 type Props<T extends ElementType = typeof DEFAULT_TYPE> = {
 	as?: T
-	variant?: 'primary' | 'lead' | 'icon'
+	variant?: 'primary' | 'lead' | 'icon' | 'outline'
 	isLoading?: boolean
 	isDisabled?: boolean
 } & ComponentPropsWithoutRef<T>
@@ -27,7 +27,7 @@ export const Button = <T extends ElementType = typeof DEFAULT_TYPE>({
 		<Component
 			disabled={disabled || isDisabled || isLoading}
 			className={combine(
-				'flex items-center gap-2 rounded-2xl no-underline transition hover:text-black',
+				'flex items-center justify-center gap-2 rounded-2xl no-underline transition hover:text-black',
 				variant === 'primary' &&
 					'bg-accent px-2 text-black hover:bg-variant sm:px-4',
 				variant === 'lead' &&
@@ -37,6 +37,7 @@ export const Button = <T extends ElementType = typeof DEFAULT_TYPE>({
 					'hover:glow-none shadow-none hover:bg-accent',
 				variant === 'icon' && 'text-accent hover:text-variant',
 				variant === 'icon' && isDisabled && 'hover:text-accent',
+				variant === 'outline' && 'grow border-2 px-2 hover:border-black',
 				isLoading && 'cursor-progress',
 				isDisabled && 'opacity-50',
 				className,
