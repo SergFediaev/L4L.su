@@ -13,7 +13,7 @@ export const Group = () => {
 
 	return (
 		<div id='Community' className='bg-background'>
-			<div className='container mx-auto flex min-h-svh snap-start flex-col gap-10 px-8 pt-8'>
+			<div className='container mx-auto flex min-h-svh flex-col gap-10 px-8 pt-8'>
 				<div className='flex grow flex-col justify-end gap-10'>
 					<div className='flex flex-col items-center gap-5'>
 						<Heading>{t('communityHeading')}</Heading>

@@ -137,7 +137,7 @@ export const Campaigns = () => {
 	return (
 		<div
 			id='Campaigns'
-			className='flex min-h-svh snap-center flex-col justify-center bg-black py-8'
+			className='flex min-h-svh flex-col justify-center bg-black py-8'
 		>
 			<div className='flex flex-col items-start gap-5 px-8 sm:items-center'>
 				<Heading as='h4'>{t('campaignToPlay')}</Heading>

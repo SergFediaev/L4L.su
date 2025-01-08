@@ -15,7 +15,7 @@ export const Video = ({ isDarkened, className, ...restProps }: Props) => {
 				loop
 				autoPlay
 				className={combine(
-					'-z-20 relative min-h-svh w-full snap-center object-cover',
+					'-z-20 relative min-h-svh w-full object-cover',
 					className,
 				)}
 				{...restProps}

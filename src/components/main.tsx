@@ -19,7 +19,7 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 
 	return (
 		<main id='Servers' {...props}>
-			<div className='flex min-h-svh snap-center flex-col items-center justify-center gap-10 bg-background px-8 py-20 shadow-black shadow-inner'>
+			<div className='flex min-h-svh flex-col items-center justify-center gap-10 bg-background px-8 py-20 shadow-black shadow-inner'>
 				<Logo />
 				<Monitoring />
 			</div>
@@ -34,7 +34,7 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 				</aside>
 			</div>
 			<Video />
-			<section className='flex snap-center flex-wrap justify-center gap-10 overflow-hidden bg-background px-8 pt-20'>
+			<section className='flex flex-wrap justify-center gap-10 overflow-hidden bg-background px-8 pt-20'>
 				<aside className='flex flex-col items-center justify-center gap-10'>
 					<a
 						href={SERVERS}
