@@ -5,7 +5,6 @@ import { Heading } from '@/components/heading'
 import { combine } from '@/utils/combine'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export default function ErrorPage({
@@ -19,7 +18,13 @@ export default function ErrorPage({
 	const t = useTranslations('HomePage')
 
 	useEffect(() => {
-		setIsMounted(true)
+		const timeout = setTimeout(() => {
+			setIsMounted(true)
+		}, 1_000)
+
+		return () => {
+			clearTimeout(timeout)
+		}
 	}, [])
 
 	const reload = () => {
@@ -29,12 +34,12 @@ export default function ErrorPage({
 	return (
 		<div className='min-h-svh bg-amber-600 text-white'>
 			<div className='container mx-auto flex flex-wrap-reverse items-center justify-center'>
-				<aside className='flex flex-col gap-5 p-8'>
+				<aside className='flex flex-col gap-4 p-8'>
 					<Heading as='h1' isAccent={false}>
 						{t('somethingWentWrong')}
 					</Heading>
 					<p className='break-all'>{error.message}</p>
-					<div className='flex flex-wrap gap-5'>
+					<div className='flex flex-wrap gap-4'>
 						<Button variant='outline' onClick={reset}>
 							{t('tryAgain')}
 						</Button>
@@ -42,12 +47,12 @@ export default function ErrorPage({
 							{t('reloadPage')}
 						</Button>
 					</div>
-					<Link
+					<a
 						href='/'
 						className='self-start decoration-white hover:text-black hover:decoration-black'
 					>
 						{t('returnToHomepage')}
-					</Link>
+					</a>
 				</aside>
 				<Image
 					src='/mika.gif'
@@ -56,7 +61,7 @@ export default function ErrorPage({
 					height={498}
 					unoptimized
 					className={combine(
-						'transition duration-1000 ease-out',
+						'w-[300] self-end transition duration-1000 ease-out',
 						isMounted ? 'translate-y-0' : '-translate-y-full',
 					)}
 				/>

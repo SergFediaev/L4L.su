@@ -23,7 +23,7 @@ export const NotFound = () => {
 
 	return (
 		<div className='container mx-auto flex flex-wrap-reverse items-center justify-center'>
-			<aside className='flex flex-col gap-5 p-8'>
+			<aside className='flex flex-col gap-4 p-8'>
 				<Heading as='h1' isAccent={false}>
 					{t('404')}
 				</Heading>
@@ -45,7 +45,7 @@ export const NotFound = () => {
 				priority
 				unoptimized
 				className={combine(
-					'transition duration-1000 ease-out',
+					'w-[300] self-end transition duration-1000 ease-out',
 					isMounted ? 'translate-y-0' : '-translate-y-full',
 				)}
 			/>

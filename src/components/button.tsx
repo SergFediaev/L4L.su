@@ -37,7 +37,8 @@ export const Button = <T extends ElementType = typeof DEFAULT_TYPE>({
 					'hover:glow-none shadow-none hover:bg-accent',
 				variant === 'icon' && 'text-accent hover:text-variant',
 				variant === 'icon' && isDisabled && 'hover:text-accent',
-				variant === 'outline' && 'grow border-2 px-2 hover:border-black',
+				variant === 'outline' &&
+					'grow border-2 px-2 hover:border-black sm:px-4',
 				isLoading && 'cursor-progress',
 				isDisabled && 'opacity-50',
 				className,
