@@ -18,7 +18,7 @@ export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 	const t = useTranslations('HomePage')
 
 	return (
-		<main id='Servers' {...props}>
+		<main {...props}>
 			<div className='flex min-h-svh flex-col items-center justify-center gap-10 bg-background px-8 py-20 shadow-black shadow-inner'>
 				<Logo />
 				<Monitoring />

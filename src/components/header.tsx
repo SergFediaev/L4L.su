@@ -22,9 +22,6 @@ export const Header = ({
 		>
 			<List isColumn={false} className='container mx-auto justify-evenly'>
 				<li>
-					<a href='/#Servers'>{t('servers')}</a>
-				</li>
-				<li>
 					<a href='https://steamcommunity.com/groups/Left4Legend/announcements'>
 						{t('news')}
 					</a>

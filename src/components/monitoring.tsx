@@ -67,7 +67,7 @@ export const Monitoring = () => {
 	}
 
 	return (
-		<div className='max-w-full'>
+		<div id='Servers' className='max-w-full'>
 			<div className='flex flex-wrap justify-between gap-2 p-2 sm:p-4'>
 				<Tooltip>
 					<TooltipTrigger asChild>
