@@ -9,7 +9,7 @@ import { getLocalItem, setLocalItem } from '@/utils/localStorage'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
-const SERVERS: ServerParams[] = [
+const SERVERS: readonly ServerParams[] = [
 	{
 		host: '95.143.216.252',
 		port: 27021,

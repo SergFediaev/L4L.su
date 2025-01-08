@@ -12,7 +12,7 @@ const saira = Saira_Stencil_One({
 	weight: '400',
 })
 
-const ROTATES = [
+const ROTATES: readonly string[] = [
 	'rotate-0',
 	'rotate-45',
 	'rotate-90',
