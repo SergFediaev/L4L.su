@@ -90,7 +90,7 @@ export const Carousel = ({
 				/>
 				<ViewportSlot>
 					<div className='flex justify-center p-8'>
-						<nav className='flex flex-wrap items-center justify-center gap-2 rounded-full bg-background p-2'>
+						<nav className='flex flex-wrap items-center justify-center gap-2 rounded-3xl bg-background p-2 sm:rounded-full'>
 							<span className='prev'>
 								<Button variant='icon'>
 									<ChevronLeft size={48} strokeWidth={3} />
