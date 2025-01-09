@@ -4,6 +4,7 @@ import { Button } from '@/components/button'
 import { List } from '@/components/list'
 import { LocaleButton } from '@/components/localeButton'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
+import { debugStore } from '@/stores/debugStore'
 import { combine } from '@/utils/combine'
 import { Bug, Menu as MenuIcon, X } from 'lucide-react'
 import { nanoid } from 'nanoid'
@@ -12,8 +13,9 @@ import { useEffect, useRef, useState } from 'react'
 
 export const Menu = () => {
 	const t = useTranslations('HomePage')
+	const { isDebug, isMarkupShown, toggleIsDebug, toggleIsMarkupShown } =
+		debugStore()
 	const [isMenuShown, setIsMenuShown] = useState(false)
-	const [isDebug, setIsDebug] = useState(false)
 	const [isError, setIsError] = useState(false)
 	const menu = useRef<HTMLDivElement>(null)
 	const button = useRef<HTMLButtonElement>(null)
@@ -37,13 +39,10 @@ export const Menu = () => {
 
 	const menuIcon = isMenuShown ? <X /> : <MenuIcon />
 	const debugTitle = t(isDebug ? 'disableDebugMode' : 'enableDebugMode')
+	const markupText = t(isMarkupShown ? 'hideMarkup' : 'showMarkup')
 
 	const toggleIsMenuShown = () => {
 		setIsMenuShown(!isMenuShown)
-	}
-
-	const toggleIsDebug = () => {
-		setIsDebug(!isDebug)
 	}
 
 	const throwError = () => {
@@ -114,6 +113,9 @@ export const Menu = () => {
 							</li>
 							<li>
 								<Button onClick={throwError}>{t('pageError')}</Button>
+							</li>
+							<li>
+								<Button onClick={toggleIsMarkupShown}>{markupText}</Button>
 							</li>
 						</>
 					)}

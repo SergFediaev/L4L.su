@@ -21,7 +21,9 @@
 - **Biome** — formatter & linter.
 - **Next-Intl** — internationalization.
 - **Ky** — HTTP client.
-- **TanStack Query** — server-state management.
+- State management:
+    - **TanStack Query** — server-state.
+    - **Zustand** — client-state.
 - **GameDig** — game server query.
 - **SteamCommunity** — Steam community interface.
 - Flat Code, Guard Clause.

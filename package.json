@@ -25,7 +25,8 @@
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"steamcommunity": "^3.48.5",
-		"tailwind-merge": "^2.6.0"
+		"tailwind-merge": "^2.6.0",
+		"zustand": "^5.0.3"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",

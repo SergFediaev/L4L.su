@@ -105,6 +105,8 @@
 		"tv": "L4L TV",
 		"enableDebugMode": "Enable debug mode",
 		"disableDebugMode": "Disable debug mode",
+		"showMarkup": "Show markup",
+		"hideMarkup": "Hide markup",
 		"page404": "Page 404",
 		"pageError": "Page error",
 		"debugError": "Debug error #",

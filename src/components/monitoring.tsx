@@ -5,9 +5,8 @@ import { Heading } from '@/components/heading'
 import { Row } from '@/components/row'
 import { Server } from '@/components/server'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
-import { getLocalItem, setLocalItem } from '@/utils/localStorage'
+import { serversStore } from '@/stores/serversStore'
 import { useTranslations } from 'next-intl'
-import { useEffect, useState } from 'react'
 
 const SERVERS: readonly ServerParams[] = [
 	{
@@ -36,16 +35,9 @@ const SERVERS: readonly ServerParams[] = [
 	},
 ] as const
 
-const SHOW_PLAYERS_DEFAULT = true
-const SHOW_PLAYERS_KEY = 'isPlayersShown'
-
 export const Monitoring = () => {
-	const [isPlayersShown, setIsPlayersShown] = useState(SHOW_PLAYERS_DEFAULT)
+	const { isPlayersShown, toggleIsPlayersShown } = serversStore()
 	const t = useTranslations('HomePage')
-
-	useEffect(() => {
-		setIsPlayersShown(getLocalItem(SHOW_PLAYERS_KEY, SHOW_PLAYERS_DEFAULT))
-	}, [])
 
 	const servers = SERVERS.map((server, index) => (
 		<Server
@@ -58,13 +50,6 @@ export const Monitoring = () => {
 	const playersText = t(
 		isPlayersShown ? 'alwaysHidePlayers' : 'alwaysShowPlayers',
 	)
-
-	const toggleIsPlayersShown = () => {
-		const value = !isPlayersShown
-
-		setLocalItem(SHOW_PLAYERS_KEY, value)
-		setIsPlayersShown(value)
-	}
 
 	return (
 		<div id='Servers' className='max-w-full'>
