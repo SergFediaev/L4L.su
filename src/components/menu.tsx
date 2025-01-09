@@ -9,6 +9,7 @@ import { combine } from '@/utils/combine'
 import { Bug, Menu as MenuIcon, X } from 'lucide-react'
 import { nanoid } from 'nanoid'
 import { useTranslations } from 'next-intl'
+import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
 export const Menu = () => {
@@ -109,7 +110,7 @@ export const Menu = () => {
 					{isDebug && (
 						<>
 							<li>
-								<a href='/not-found'>{t('page404')}</a>
+								<Link href='/not-found'>{t('page404')}</Link>
 							</li>
 							<li>
 								<Button onClick={throwError}>{t('pageError')}</Button>

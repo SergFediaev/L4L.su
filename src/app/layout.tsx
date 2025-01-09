@@ -9,7 +9,10 @@ import { getLocale, getMessages } from 'next-intl/server'
 import { type ReactNode, Suspense } from 'react'
 
 export const metadata: Metadata = {
-	title: 'Left 4 Legend',
+	title: {
+		template: '%s | L4L',
+		default: 'Left 4 Legend',
+	},
 	description: 'Left 4 Legend servers',
 	keywords: [
 		'Left 4 Legend',
@@ -21,6 +24,17 @@ export const metadata: Metadata = {
 		'Notasi',
 		'Milandro',
 	],
+	generator: 'Next.js',
+	applicationName: 'L4L.su',
+	creator: 'Sefo',
+	metadataBase: new URL('https://l4l.su'),
+	alternates: {
+		canonical: '/',
+		languages: {
+			'en-US': '/en-US',
+			'ru-RU': '/ru-RU',
+		},
+	},
 }
 
 export default async function RootLayout({

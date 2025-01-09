@@ -18,6 +18,10 @@ export default function ErrorPage({
 	const t = useTranslations('HomePage')
 
 	useEffect(() => {
+		console.error(error)
+	}, [error])
+
+	useEffect(() => {
 		const timeout = setTimeout(() => {
 			setIsMounted(true)
 		}, 1_000)

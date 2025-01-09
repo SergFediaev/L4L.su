@@ -20,7 +20,7 @@ export const Body = ({
 		<body
 			className={combine(
 				`${inter.className} text-neutral-50 antialiased sm:text-2xl`,
-				isMarkupShown && '[&_*]:border [&_*]:border-red-500',
+				isMarkupShown && '[&_*]:border [&_*]:border-[#f00]',
 				className,
 			)}
 			{...restProps}
