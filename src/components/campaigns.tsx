@@ -3,6 +3,7 @@ import { Heading } from '@/components/heading'
 import { Poster } from '@/components/poster'
 import { combine } from '@/utils/combine'
 import { getRandomIndex } from '@/utils/getRandomIndex'
+import { scrollToElement } from '@/utils/scrollToElement'
 import { AutoPlay } from '@egjs/flicking-plugins'
 import Flicking from '@egjs/react-flicking'
 import { CircleX } from 'lucide-react'
@@ -16,6 +17,8 @@ type Campaign = {
 }
 
 const plugins = [new AutoPlay({ duration: 0 })]
+
+const CAMPAIGNS_ID = 'Campaigns'
 
 export const Campaigns = () => {
 	const t = useTranslations('HomePage')
@@ -122,6 +125,7 @@ export const Campaigns = () => {
 
 			setCampaign(campaigns[randomIndex])
 			setIsRandomizing(false)
+			scrollToElement(CAMPAIGNS_ID)
 		}, 2_000)
 	}
 
@@ -136,7 +140,7 @@ export const Campaigns = () => {
 
 	return (
 		<div
-			id='Campaigns'
+			id={CAMPAIGNS_ID}
 			className='flex min-h-svh flex-col justify-center bg-black py-8'
 		>
 			<div className='flex flex-col items-start gap-5 px-8 sm:items-center'>

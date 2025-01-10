@@ -10,6 +10,7 @@ import '@egjs/react-flicking/dist/flicking.css'
 import { Button } from '@/components/button'
 import { Slide } from '@/components/slide'
 import { combine } from '@/utils/combine'
+import { scrollToElement } from '@/utils/scrollToElement'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import type { ComponentPropsWithoutRef } from 'react'
@@ -28,16 +29,19 @@ const plugins = [
 	}),
 ]
 
+const CAROUSEL_ID = 'Promo'
+
 export const Carousel = ({
 	className,
 	...restProps
 }: ComponentPropsWithoutRef<'div'>) => {
 	const locale = useLocale()
 	const t = useTranslations('HomePage')
+	const scrollToCarousel = () => scrollToElement(CAROUSEL_ID)
 
 	return (
 		<div
-			id='Promo'
+			id={CAROUSEL_ID}
 			className={combine('flex min-h-svh flex-col justify-center', className)}
 			{...restProps}
 		>
@@ -92,13 +96,13 @@ export const Carousel = ({
 					<div className='flex justify-center p-8'>
 						<nav className='flex flex-wrap items-center justify-center gap-2 rounded-3xl bg-background p-2 sm:rounded-full'>
 							<span className='prev'>
-								<Button variant='icon'>
+								<Button variant='icon' onClick={scrollToCarousel}>
 									<ChevronLeft size={48} strokeWidth={3} />
 								</Button>
 							</span>
 							<div className='pagination font-mono' />
 							<span className='next'>
-								<Button variant='icon'>
+								<Button variant='icon' onClick={scrollToCarousel}>
 									<ChevronRight size={48} strokeWidth={3} />
 								</Button>
 							</span>
