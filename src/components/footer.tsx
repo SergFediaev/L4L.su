@@ -20,7 +20,7 @@ export const Footer = ({
 			<div className='container mx-auto flex flex-wrap gap-x-10 gap-y-4 sm:justify-around'>
 				<List>
 					<li>
-						<a href='/#Servers'>{t('monitoringServers')}</a>
+						<a href='/#Servers'>{t('serversMonitoring')}</a>
 					</li>
 					<li>
 						<a href='https://steamcommunity.com/groups/Left4Legend/discussions/0/601891362926791888'>

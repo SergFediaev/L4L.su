@@ -8,14 +8,27 @@ import { Logo } from '@/components/logo'
 import { Monitoring } from '@/components/monitoring'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
 import { Video } from '@/components/video'
+import { settingsStore } from '@/stores/settingsStore'
+import { scrollToElement } from '@/utils/scrollToElement'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
-import type { ComponentPropsWithoutRef } from 'react'
+import { type ComponentPropsWithoutRef, useEffect } from 'react'
 
 const SERVERS = '/#Servers'
 
 export const Main = (props: ComponentPropsWithoutRef<'main'>) => {
 	const t = useTranslations('HomePage')
+	const {
+		startSection: { id },
+	} = settingsStore()
+
+	useEffect(() => {
+		if (id === 'Default') {
+			return
+		}
+
+		scrollToElement(id)
+	}, [id])
 
 	return (
 		<main {...props}>

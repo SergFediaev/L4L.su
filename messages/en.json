@@ -82,14 +82,14 @@
 		"slide6Source": "Soldier (49-th unit)",
 		"slide7Heading": "Are You Ready to Become a Legend?",
 		"slide7Text": "Left 4 Legend isn’t just a servers — it’s a test of skill, teamwork, and survival instincts. Can you and your squad rise to the occasion? Join us today and prove you’ve got what it takes to survive the ultimate Left 4 Dead 2 experience!",
-		"slide7Review": "That's our official instructions",
+		"slide7Review": "That's our official instruction",
 		"playNow": "Play now",
 		"nowPlaying": "Now playing!",
 		"qrAlt": "QR code",
 		"qrTitle": "Join community",
 		"artAlt": "Levi Ackerman",
 		"artTitle": "Not an anime fan, but they say projects work better with it :D",
-		"monitoringServers": "Monitoring servers",
+		"serversMonitoring": "Servers monitoring",
 		"supportByDonation": "Support by donation",
 		"reportServersProblem": "Report a servers problem",
 		"completeServersGuide": "Complete servers guide",
@@ -117,6 +117,12 @@
 		"404": "404",
 		"addressNotFound": "Requested address not found:",
 		"returnToHomepage": "Return to homepage",
-		"404ArtAlt": "Sasha Braus"
+		"404ArtAlt": "Sasha Braus",
+		"animations": "Animations",
+		"animationsTitle": "Slide flipping animations",
+		"startSection": "Start section",
+		"menu": "Menu",
+		"settings": "Settings",
+		"default": "Default"
 	}
 }

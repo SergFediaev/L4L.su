@@ -9,6 +9,7 @@ import Flicking, { ViewportSlot } from '@egjs/react-flicking'
 import '@egjs/react-flicking/dist/flicking.css'
 import { Button } from '@/components/button'
 import { Slide } from '@/components/slide'
+import { settingsStore } from '@/stores/settingsStore'
 import { combine } from '@/utils/combine'
 import { scrollToElement } from '@/utils/scrollToElement'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
@@ -37,6 +38,7 @@ export const Carousel = ({
 }: ComponentPropsWithoutRef<'div'>) => {
 	const locale = useLocale()
 	const t = useTranslations('HomePage')
+	const { isAnimationsEnabled } = settingsStore()
 	const scrollToCarousel = () => scrollToElement(CAROUSEL_ID)
 
 	return (
@@ -49,7 +51,7 @@ export const Carousel = ({
 				circular={true}
 				plugins={plugins}
 				key={locale}
-				duration={1_000}
+				duration={isAnimationsEnabled ? 1_000 : 0}
 				moveType='strict'
 			>
 				<Slide
