@@ -112,7 +112,7 @@ export const Menu = () => {
 			</button>
 			<nav
 				ref={menu}
-				className='flex flex-wrap gap-10 rounded-3xl bg-neutral-700 bg-opacity-80 p-8 shadow-black shadow-lg backdrop-blur-xl'
+				className='flex max-h-[500px] flex-wrap gap-10 overflow-y-auto rounded-3xl bg-neutral-700 bg-opacity-80 p-8 shadow-black shadow-lg backdrop-blur-xl'
 			>
 				<List className='grow'>
 					<Heading as='h5' isAccent={false} isLarge={false}>
@@ -124,7 +124,7 @@ export const Menu = () => {
 							<select
 								onChange={onChangeSection}
 								value={startSection.id}
-								className='w-full max-w-fit truncate rounded bg-accent pl-2 text-black'
+								className='w-full max-w-fit truncate rounded bg-accent pl-2 text-black sm:pl-4'
 							>
 								{SECTIONS.map(({ id, name }) => (
 									<option key={id} value={id} className='checked:bg-variant'>
