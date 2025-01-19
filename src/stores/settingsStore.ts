@@ -9,16 +9,19 @@ export type Section = {
 type SettingsState = {
 	startSection: Section
 	isAnimationsEnabled: boolean
+	isHeaderPinned: boolean
 }
 
 type SettingsActions = {
 	setStartSection: (startSection: Section) => void
 	toggleIsAnimationsEnabled: () => void
+	toggleIsHeaderPinned: () => void
 }
 
 const initialSettings: SettingsState = {
 	startSection: { id: 'Default' },
 	isAnimationsEnabled: true,
+	isHeaderPinned: true,
 }
 
 export const settingsStore = create<SettingsState & SettingsActions>()(
@@ -34,6 +37,12 @@ export const settingsStore = create<SettingsState & SettingsActions>()(
 						state => ({ isAnimationsEnabled: !state.isAnimationsEnabled }),
 						undefined,
 						'settings/toggleIsAnimationsEnabled',
+					),
+				toggleIsHeaderPinned: () =>
+					set(
+						state => ({ isHeaderPinned: !state.isHeaderPinned }),
+						undefined,
+						'settings/toggleIsHeaderPinned',
 					),
 			}),
 			{ name: 'settings' },

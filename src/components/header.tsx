@@ -2,6 +2,7 @@
 
 import { List } from '@/components/list'
 import { LocaleButton } from '@/components/localeButton'
+import { settingsStore } from '@/stores/settingsStore'
 import { combine } from '@/utils/combine'
 import { useTranslations } from 'next-intl'
 import type { ComponentPropsWithoutRef } from 'react'
@@ -11,11 +12,13 @@ export const Header = ({
 	...restProps
 }: ComponentPropsWithoutRef<'header'>) => {
 	const t = useTranslations('HomePage')
+	const { isHeaderPinned } = settingsStore()
 
 	return (
 		<header
 			className={combine(
-				'top-0 z-30 bg-black bg-opacity-80 p-4 shadow-2xl shadow-black backdrop-blur-lg sm:sticky',
+				'top-0 z-30 bg-black bg-opacity-80 p-4 shadow-2xl shadow-black backdrop-blur-lg',
+				isHeaderPinned && 'sm:sticky',
 				className,
 			)}
 			{...restProps}
@@ -37,9 +40,7 @@ export const Header = ({
 					</a>
 				</li>
 				<li>
-					<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3384448522'>
-						{t('guide')}
-					</a>
+					<a href={t('guideUrl')}>{t('guide')}</a>
 				</li>
 				<li>
 					<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3388609126'>

@@ -7,9 +7,11 @@ import { Loader } from '@/components/loader'
 import { Players } from '@/components/players'
 import { PlayersCount } from '@/components/playersCount'
 import { Row } from '@/components/row'
+import { ServerName } from '@/components/serverName'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
 import { Warn } from '@/components/warn'
 import { useGetServer } from '@/hooks/useServers'
+import { serversStore } from '@/stores/serversStore'
 import {
 	Copy,
 	CopyCheck,
@@ -30,6 +32,7 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 	const [isPlayersShown, setIsPlayersShown] = useState(restProps.isPlayersShown)
 	const [isCopied, setIsCopied] = useState(false)
 	const t = useTranslations('HomePage')
+	const { isCopyShown, isConnectShown, isTickShown } = serversStore()
 	const { data, isPending, isRefetching, isError, error } =
 		useGetServer(serverParams)
 
@@ -83,16 +86,18 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 	}
 
 	const { name, numplayers, maxplayers, ping, map, players } = data
-	const hasNotPlayers = numplayers === 0
+	const hasPlayers = numplayers > 0
 	const playersIcon = isPlayersShown ? <EyeOff /> : <Eye />
-	const playersTitle = hasNotPlayers
-		? undefined
-		: t(isPlayersShown ? 'hidePlayers' : 'showPlayers')
+	const playersTitle = hasPlayers
+		? t(isPlayersShown ? 'hidePlayers' : 'showPlayers')
+		: undefined
 
 	return (
 		<>
 			<Row isHighlighted>
-				<Cell className='text-nowrap'>{name}</Cell>
+				<Cell className='text-nowrap'>
+					<ServerName name={name} />
+				</Cell>
 				<Cell className='flex gap-4'>
 					<Tooltip>
 						<TooltipTrigger asChild>
@@ -102,44 +107,48 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 						</TooltipTrigger>
 						<TooltipContent>{connectTitle}</TooltipContent>
 					</Tooltip>
-					<Tooltip>
-						<TooltipTrigger asChild>
-							<Button variant='icon' onClick={copy}>
-								{copyIcon}
-							</Button>
-						</TooltipTrigger>
-						<TooltipContent>{t('copyServerAddress')}</TooltipContent>
-					</Tooltip>
-					<Tooltip>
-						<TooltipTrigger asChild>
-							<Button variant='icon' as='a' href={connect}>
-								<Gamepad2 />
-							</Button>
-						</TooltipTrigger>
-						<TooltipContent>{connectTitle}</TooltipContent>
-					</Tooltip>
+					{isCopyShown && (
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<Button variant='icon' onClick={copy}>
+									{copyIcon}
+								</Button>
+							</TooltipTrigger>
+							<TooltipContent>{t('copyServerAddress')}</TooltipContent>
+						</Tooltip>
+					)}
+					{isConnectShown && (
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<Button variant='icon' as='a' href={connect}>
+									<Gamepad2 />
+								</Button>
+							</TooltipTrigger>
+							<TooltipContent>{connectTitle}</TooltipContent>
+						</Tooltip>
+					)}
 				</Cell>
-				<Cell isRightAligned>30</Cell>
-				<Cell isRightAligned className='flex gap-4'>
+				<Cell isRightAligned>{isTickShown && 30}</Cell>
+				<Cell className='flex justify-end gap-4'>
+					{hasPlayers && (
+						<Tooltip>
+							<TooltipTrigger asChild>
+								<Button
+									variant='icon'
+									onClick={toggleIsPlayersShown}
+									isDisabled={!hasPlayers}
+								>
+									{playersIcon}
+								</Button>
+							</TooltipTrigger>
+							<TooltipContent>{playersTitle}</TooltipContent>
+						</Tooltip>
+					)}
 					<PlayersCount numplayers={numplayers} maxplayers={maxplayers} />
-					<Tooltip>
-						<TooltipTrigger asChild>
-							<Button
-								variant='icon'
-								onClick={toggleIsPlayersShown}
-								isDisabled={hasNotPlayers}
-							>
-								{playersIcon}
-							</Button>
-						</TooltipTrigger>
-						<TooltipContent>{playersTitle}</TooltipContent>
-					</Tooltip>
 				</Cell>
 				<Cell isRightAligned>{ping}</Cell>
 				<Cell>{map}</Cell>
-				<Cell className='align-middle'>
-					<span className='flex justify-end'>{status}</span>
-				</Cell>
+				<Cell className='align-middle'>{status}</Cell>
 			</Row>
 			{isPlayersShown && <Players players={players} />}
 		</>

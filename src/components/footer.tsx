@@ -33,9 +33,7 @@ export const Footer = ({
 						</a>
 					</li>
 					<li>
-						<a href='https://steamcommunity.com/sharedfiles/filedetails/?id=3384448522'>
-							{t('completeServersGuide')}
-						</a>
+						<a href={t('guideUrl')}>{t('completeServersGuide')}</a>
 					</li>
 				</List>
 				<List className='sm:text-center'>
