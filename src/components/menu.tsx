@@ -109,15 +109,39 @@ export const Menu = () => {
 						: 'translate-y-full ease-in sm:translate-x-full sm:translate-y-0',
 				)}
 			>
-				<Button
-					variant='icon'
-					onClick={toggleIsMenuShown}
-					className='sticky top-0 justify-between bg-black px-8 py-4'
+				<Heading
+					as='h5'
+					isAccent={false}
+					isLarge={false}
+					className='sticky top-0 bg-black px-8 py-4'
 				>
-					{t('menu')}
-					<X />
-				</Button>
-				<div className='flex h-full flex-col justify-between gap-10 p-8'>
+					<Button
+						variant='icon'
+						onClick={toggleIsMenuShown}
+						className='w-full justify-between'
+					>
+						{t('menu')}
+						<X strokeWidth={4} />
+					</Button>
+				</Heading>
+				<div className='flex h-full flex-col justify-between gap-10 px-8 pt-4 pb-8'>
+					<List>
+						<li>
+							<a href='/#Servers'>{t('serversMonitoring')}</a>
+						</li>
+						<li>
+							<a href='/#Campaigns'>{t('randomCampaign')}</a>
+						</li>
+						<li>
+							<a href='/#Community'>{t('community')}</a>
+						</li>
+						<li>
+							<a href='/#Promo'>{t('promo')}</a>
+						</li>
+						<li>
+							<a href='/#TV'>{t('tv')}</a>
+						</li>
+					</List>
 					<List>
 						<Heading as='h5' isAccent={false} isLarge={false}>
 							{t('settings')}
@@ -178,26 +202,6 @@ export const Menu = () => {
 								</li>
 							</>
 						)}
-					</List>
-					<List>
-						<Heading as='h5' isAccent={false} isLarge={false}>
-							{t('menu')}
-						</Heading>
-						<li>
-							<a href='/#Servers'>{t('serversMonitoring')}</a>
-						</li>
-						<li>
-							<a href='/#Campaigns'>{t('randomCampaign')}</a>
-						</li>
-						<li>
-							<a href='/#Community'>{t('community')}</a>
-						</li>
-						<li>
-							<a href='/#Promo'>{t('promo')}</a>
-						</li>
-						<li>
-							<a href='/#TV'>{t('tv')}</a>
-						</li>
 					</List>
 				</div>
 			</nav>
