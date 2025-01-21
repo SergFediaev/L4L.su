@@ -128,8 +128,10 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 						</Tooltip>
 					)}
 				</Cell>
-				<Cell isRightAligned>{isTickShown && 30}</Cell>
-				<Cell className='flex justify-end gap-4'>
+				<Cell isRightAligned isMono>
+					{isTickShown && 30}
+				</Cell>
+				<Cell isMono className='flex items-baseline justify-end gap-4'>
 					{hasPlayers && (
 						<Tooltip>
 							<TooltipTrigger asChild>
@@ -137,6 +139,7 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 									variant='icon'
 									onClick={toggleIsPlayersShown}
 									isDisabled={!hasPlayers}
+									className='self-center'
 								>
 									{playersIcon}
 								</Button>
@@ -146,7 +149,9 @@ export const Server = ({ serverParams, ...restProps }: Props) => {
 					)}
 					<PlayersCount numplayers={numplayers} maxplayers={maxplayers} />
 				</Cell>
-				<Cell isRightAligned>{ping}</Cell>
+				<Cell isRightAligned isMono>
+					{ping}
+				</Cell>
 				<Cell>{map}</Cell>
 				<Cell className='align-middle'>{status}</Cell>
 			</Row>

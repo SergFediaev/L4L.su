@@ -4,6 +4,7 @@ import { Cell } from '@/components/cell'
 import { Heading } from '@/components/heading'
 import { Row } from '@/components/row'
 import { Server } from '@/components/server'
+import { TextWrap } from '@/components/textWrap'
 import { Toggle } from '@/components/toggle'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/tooltip'
 import { serversStore } from '@/stores/serversStore'
@@ -80,42 +81,36 @@ export const Monitoring = () => {
 
 	return (
 		<div id='Servers' className='max-w-full'>
-			<div className='flex flex-wrap justify-between gap-2 p-2 sm:p-4'>
-				<Heading as='h2' className='group'>
-					<Tooltip placement='right'>
-						<TooltipTrigger asChild>
-							<Button
-								variant='icon'
-								onClick={toggleIsSettingsShown}
-								className='flex-wrap justify-start text-left'
-							>
-								{t('onlineServersMonitoring')}
-								<Settings size={30} className='group-hover:animate-spin' />
-							</Button>
-						</TooltipTrigger>
-						<TooltipContent>{settingsTitle}</TooltipContent>
-					</Tooltip>
-				</Heading>
-			</div>
+			<Heading as='h2'>
+				<Tooltip placement='right'>
+					<TooltipTrigger asChild>
+						<Button
+							variant='icon'
+							onClick={toggleIsSettingsShown}
+							className='group flex-wrap justify-start gap-x-4 p-2 text-left sm:p-4'
+						>
+							<TextWrap>{t('onlineServersMonitoring')}</TextWrap>
+							<Settings size={30} className='group-hover:animate-spin' />
+						</Button>
+					</TooltipTrigger>
+					<TooltipContent>{settingsTitle}</TooltipContent>
+				</Tooltip>
+			</Heading>
 			{isSettingsShown && (
 				<div className='max-w-lg p-2 sm:p-4'>
 					{t('autoRefresh')}
-					<Button variant='toggle' onClick={toggleIsPlayersShown}>
+					<Toggle onClick={toggleIsPlayersShown} isEnabled={isPlayersShown}>
 						{t('alwaysShowPlayers')}
-						<Toggle isEnabled={isPlayersShown} />
-					</Button>
-					<Button variant='toggle' onClick={toggleIsCopyShown}>
+					</Toggle>
+					<Toggle onClick={toggleIsCopyShown} isEnabled={isCopyShown}>
 						{t('showCopyButton')}
-						<Toggle isEnabled={isCopyShown} />
-					</Button>
-					<Button variant='toggle' onClick={toggleIsConnectShown}>
+					</Toggle>
+					<Toggle onClick={toggleIsConnectShown} isEnabled={isConnectShown}>
 						{t('showConnectButton')}
-						<Toggle isEnabled={isConnectShown} />
-					</Button>
-					<Button variant='toggle' onClick={toggleIsTickShown}>
+					</Toggle>
+					<Toggle onClick={toggleIsTickShown} isEnabled={isTickShown}>
 						{t('showTickrate')}
-						<Toggle isEnabled={isTickShown} />
-					</Button>
+					</Toggle>
 				</div>
 			)}
 			<div className='overflow-x-auto p-1'>

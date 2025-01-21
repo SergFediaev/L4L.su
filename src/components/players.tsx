@@ -19,10 +19,12 @@ export const Players = (props: Props) => {
 	const players = props.players.map(({ name, raw: { time, score } }, index) => (
 		<Row key={`${index}-${name}-${time}-${score}`} isHighlighted>
 			<Cell>{name}</Cell>
-			<Cell isRightAligned>
+			<Cell isRightAligned isMono>
 				<Played time={time} />
 			</Cell>
-			<Cell isRightAligned>{score}</Cell>
+			<Cell isRightAligned isMono>
+				{score}
+			</Cell>
 		</Row>
 	))
 

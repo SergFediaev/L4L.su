@@ -109,21 +109,21 @@ export const Menu = () => {
 						: 'translate-y-full ease-in sm:translate-x-full sm:translate-y-0',
 				)}
 			>
-				<Heading
-					as='h5'
-					isAccent={false}
-					isLarge={false}
-					className='sticky top-0 bg-black px-8 py-4'
+				<button
+					type='button'
+					onClick={toggleIsMenuShown}
+					className='sticky top-0 flex flex-wrap items-center justify-between bg-accent px-8 py-4 text-black transition hover:bg-variant'
 				>
-					<Button
-						variant='icon'
-						onClick={toggleIsMenuShown}
-						className='w-full justify-between'
+					<Heading
+						as='h5'
+						isAccent={false}
+						isLarge={false}
+						className='text-xl sm:text-2xl'
 					>
 						{t('menu')}
-						<X strokeWidth={4} />
-					</Button>
-				</Heading>
+					</Heading>
+					<X strokeWidth={4} />
+				</button>
 				<div className='flex h-full flex-col justify-between gap-10 px-8 pt-4 pb-8'>
 					<List>
 						<li>
@@ -163,16 +163,17 @@ export const Menu = () => {
 							</label>
 						</li>
 						<li>
-							<Button variant='toggle' onClick={toggleIsAnimationsEnabled}>
+							<Toggle
+								onClick={toggleIsAnimationsEnabled}
+								isEnabled={isAnimationsEnabled}
+							>
 								{t('slideAnimation')}
-								<Toggle isEnabled={isAnimationsEnabled} />
-							</Button>
+							</Toggle>
 						</li>
 						<li>
-							<Button variant='toggle' onClick={toggleIsHeaderPinned}>
+							<Toggle onClick={toggleIsHeaderPinned} isEnabled={isHeaderPinned}>
 								{t('pinnedHeader')}
-								<Toggle isEnabled={isHeaderPinned} />
-							</Button>
+							</Toggle>
 						</li>
 						<li className='flex flex-wrap justify-between gap-4'>
 							<LocaleButton />
