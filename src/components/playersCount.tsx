@@ -6,10 +6,11 @@ type Props = {
 }
 
 export const PlayersCount = ({ numplayers, maxplayers }: Props) => {
+	const isFull = numplayers >= maxplayers
 	const hasPlayers = numplayers > 0
 
 	return (
-		<span className='text-nowrap'>
+		<span className={combine('text-nowrap', isFull && 'text-variant')}>
 			<span className={combine(hasPlayers && 'text-variant')}>
 				{numplayers}
 			</span>
