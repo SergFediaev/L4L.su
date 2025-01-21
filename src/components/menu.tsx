@@ -103,7 +103,7 @@ export const Menu = () => {
 			<nav
 				ref={menu}
 				className={combine(
-					'fixed right-0 bottom-0 z-30 flex max-h-screen w-full flex-col overflow-y-auto bg-neutral-700 bg-opacity-80 shadow-black shadow-lg backdrop-blur-xl transition duration-500 sm:h-full sm:w-fit',
+					'fixed right-0 bottom-0 z-30 flex max-h-screen w-full flex-col overflow-y-auto rounded-tl-3xl rounded-tr-3xl bg-neutral-700 bg-opacity-80 shadow-black shadow-lg backdrop-blur-xl transition duration-500 sm:h-full sm:w-fit sm:rounded-tr-none sm:rounded-bl-3xl',
 					isMenuShown
 						? 'ease-out'
 						: 'translate-y-full ease-in sm:translate-x-full sm:translate-y-0',
