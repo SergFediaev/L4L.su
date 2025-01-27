@@ -35,6 +35,7 @@ export const metadata: Metadata = {
 			'ru-RU': '/ru-RU',
 		},
 	},
+	other: { 'yandex-verification': 'b5489fa3a86b7a9a' },
 }
 
 export default async function RootLayout({
