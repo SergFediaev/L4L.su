@@ -6,6 +6,10 @@ export const useGetServer = (searchParams: ServerParams) =>
 	useQuery({
 		queryKey: ['server', ...Object.values(searchParams)],
 		queryFn: () => fetchServer(searchParams),
+		gcTime: 0,
 		refetchInterval: 30_000,
 		refetchIntervalInBackground: true,
+		refetchOnWindowFocus: 'always',
+		refetchOnReconnect: 'always',
+		refetchOnMount: 'always',
 	})
